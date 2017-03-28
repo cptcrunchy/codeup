@@ -1,0 +1,10 @@
+.bubble-form{
+    background-color: #2aabd2;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    -webkit-box-shadow: 11px 8px 5px 1px #3c3c3c;
+    -moz-box-shadow: 11px 8px 5px 1px #3c3c3c;
+    box-shadow: 11px 8px 5px 1px #3c3c3c;
+}
