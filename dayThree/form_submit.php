@@ -7,7 +7,7 @@ if(isset($_POST['form1'])) {
     if($password == 'tacos' && $username == 'deadpool') {
         header("Location: welcome.html");
    } else {
-       echo "Not the password. <a href='form.html'>Try Again!</a>";
+       echo "Not the password. <a href='my_first_form.html'>Try Again!</a>";
    }
 
 }
