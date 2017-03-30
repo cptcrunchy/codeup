@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.box {
+    height: 50px;
+    width: 150px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #000;
+
+}
+.box:nth-child(1n+3) {
+    margin-left: 30px;
+}
+.red {
+    background: #f00;
+}
+.orange {
+    background: #ffb013;
+}
+.yellow {
+    background: #fffa0a;
+}
+.green {
+    background: #0f0;
+}
+.blue {
+    background: #00f;
+}
+.indigo {
+    background: #ff00fb;
+}

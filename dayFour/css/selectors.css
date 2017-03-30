@@ -1,0 +1,88 @@
+body{
+    margin:0;
+    padding:0;
+}
+* {
+    height: auto;
+    width: auto;
+}
+/* selector for id="container" */
+#container {
+    margin: 50px auto;
+    width: 500px;
+    padding: 10px;
+}
+
+/*  selector for all "h1" elements
+    that are a descendent of id="container"
+    and have a class of "fancy-header" */
+h1.fancy-header {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* selector for all "em" elements */
+em{
+    font-weight: bold;
+}
+
+/* selector for all elements with class="article" */
+.article {
+    clear:both;
+}
+
+/*  selector for all "anchor" elements
+    that are a direct child of an element with class="article" */
+.article a {
+    float:right;
+}
+
+.letter {
+    background: #f9f6f3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: 26px auto 0;
+    max-width: 550px;
+    min-height: 300px;
+    padding: 24px;
+    position: relative;
+    width: 80%;
+}
+.letter:before, .letter:after {
+    content: "";
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+.letter:before {
+    background: #fafafa;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+.letter:after {
+    background: #f6f6f6;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+.btn {
+    border: 1px solid #b5b5b5;
+    border-radius: 7px;
+    padding: 10px;
+    text-decoration: none;
+    line-height: 1.5;
+    width: auto;
+}
+.btn-primary {
+    background: #3965ff;
+    color: #ffffff;
+
+}
+.btn-primary:hover {
+    font-weight: bold;
+    border-color: #ffffff;
+
+}
