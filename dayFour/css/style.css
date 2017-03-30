@@ -1,0 +1,18 @@
+body {
+    background-color: #8E949A;
+}
+.boxes {
+    width: 10em;
+    height: 10em;
+    display: block;
+    float: left;
+}
+.green {
+    background: #4cae4c;
+}
+.blue {
+    background: #0a0cff;
+}
+.red {
+    background: #ff0000;
+}
