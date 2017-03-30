@@ -1,4 +1,74 @@
-.fancy-header {
-    color: blue; /* single line comment */
-    text-decoration: underline;
+body {
+    margin: 0;
+    padding: 0;
 }
+a {
+    background-color: transparent;
+}
+.top-navigation {
+    font-weight: bold;
+}
+.top-navigation a {
+    color: #8E949A;
+    text-decoration: none;
+    padding: 5px;
+}
+.top-navigation>ul {
+    display: flex;
+}
+.top-navigation>ul>li {
+    padding: 5px 0 ;
+}
+.pill-nav {
+    border: 1px solid #a7a6a6;
+    display: block;
+    float: left;
+
+
+}
+.pill-nav:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pill-nav:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.pill-nav> a:hover {
+    background-color: #265a88;
+    color: #fff;
+    text-decoration: none;
+
+}
+.header {
+    background: rgb(36, 41, 46);
+    width: 100%;
+    padding: 12px 0;
+}
+.container {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.header-logo-invertocat {
+    float: left;
+    margin: -1px 15px -1px -2px;
+    color: #fff;
+    white-space: nowrap;
+}
+.octicon {
+    display: inline-block;
+    vertical-align: text-top;
+    fill: currentColor;
+}
+.header-logo-invertocat .octicon-mark-github {
+    float: left;
+}
+/*.header .header-search {*/
+    /*width: 300px;*/
+    /*margin-right: 10px;*/
+    /*font-size: 13px;*/
+/*}*/
+/*.header-search {*/
+    /*float: left;*/
+/*}*/
