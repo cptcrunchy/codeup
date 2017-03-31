@@ -12,7 +12,7 @@ body{
     border: 1px solid #000;
 
 }
-.box:nth-child(1n+3) {
+.boxes {
     margin-left: 30px;
 }
 .red {
