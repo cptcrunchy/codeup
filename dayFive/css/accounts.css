@@ -1,0 +1,13 @@
+body {
+    font-family: greycliff-regular;
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: gray;
+    background: #fff;
+}
+.layout_header-perspective {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+}
