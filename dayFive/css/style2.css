@@ -1,0 +1,48 @@
+.container {
+    margin:0 0 0 0;
+}
+.row {
+    width: 390px;
+    margin: 0;
+    padding: 0;
+}
+.box {
+    border: 1px solid #000;
+    height: 50px;
+    width: 51px;
+    margin: 40px 0px 0px 0px;
+    padding: 10px;
+}
+.boxes {
+    width: 115px;
+    height: 125px;
+    margin: 0 15px 0 0;
+    position: relative;
+    float: left;
+}
+.box-red {
+    background-color: #F00;
+}
+.box-orange {
+    background-color: #f36d0e;
+}
+.box-yellow {
+    background-color: #FF0;
+}
+.box-green {
+    background-color: #006700;
+}
+.box-blue {
+    background-color: #00F;
+}
+.box-violet {
+    background-color: #fb00ff;
+}
+.box-text {
+    margin: 0;
+    font-weight: bold;
+    color:#FFF;
+}
+.box-img {
+    float: right;
+}
