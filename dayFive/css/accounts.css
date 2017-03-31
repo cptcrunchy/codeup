@@ -17,7 +17,7 @@ a:-webkit-any-link {
     text-decoration: none;
     cursor: auto;
 }
-a, a:link {
+a, a:hover {
     color: #b85626;
     -webkit-transition: none 0.2s ease-out;
     -moz-transition: none 0.2s ease-out;
@@ -65,6 +65,12 @@ a, a:link {
     width: 100%;
     height: 100%;
     display: table;
+}
+.layout_header .logo {
+    display: inline-block;
+    padding: 25px 0;
+    width: 180px;
+    height: 30px;
 }
 
 #main {
