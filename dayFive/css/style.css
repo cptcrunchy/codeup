@@ -1,24 +1,27 @@
 .container {
     margin:0 0 0 0;
 }
-.row {
-    width: 390px;
-    margin: 0;
-    padding: 0;
+.header {
+    margin: 0 0 50px 0;
 }
 .box {
     border: 1px solid #000;
-    height: 50px;
-    width: 51px;
-    margin: 40px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     padding: 10px;
 }
-.boxes {
-    width: 115px;
-    height: 125px;
-    margin: 0 15px 0 0;
+#boxes {
+    width: 50px;
+    height: 50px;
     position: relative;
     float: left;
+    font-weight: bold;
+    color: #FFF;
+    padding: 15px;
+
+
+}
+.box:nth-child(4) {
+    clear: left;
 }
 .box-red {
     background-color: #F00;
@@ -39,10 +42,11 @@
     background-color: #fb00ff;
 }
 .box-text {
-    margin: 0;
-    font-weight: bold;
-    color:#FFF;
+
 }
+
 .box-img {
-    float: right;
+    position: relative;
+    top: -40px;
+    right: -30px;
 }
