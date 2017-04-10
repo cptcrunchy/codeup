@@ -28,7 +28,7 @@ function problemOne() {
             console.log("Total: $" + total.toFixed(2));
     }
 }
-problemOne();
+// problemOne();
 
 function problemTwo() {
     var calendarNum = Math.floor(Math.random() * 12)
