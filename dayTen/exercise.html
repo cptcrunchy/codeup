@@ -46,9 +46,25 @@
 //    const newAge = parseInt(age) + 1;
 //    console.log(newAge);
 
-    const par = parseInt("2546.99");
+//    const par = parseInt("2546.99");
+//
+//    console.log(par);
+//
+//    const fName = "Jason";
+//    const lName = "Gutierrez";
+//
+//    const upper = fName.toUpperCase();
+//    const lower = fName.toLowerCase();
+//        console.log(upper,'\n',lower);
 
-    console.log(par);
+    const phone = "2103934587";
+    const areaCode = phone.substr(0,3);
+    const threeDig = phone.substr(3,3);
+    const subset1  = phone.substr(4,2);
+    const subset2  = phone.substr(6,2);
+
+    const phoneNumber = ('('+areaCode+') '+threeDig+'-'+subset1+'-'+subset2);
+    console.log(phoneNumber);
 </script>
 
 </body>
