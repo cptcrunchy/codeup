@@ -16,24 +16,31 @@
         //     random = Math.floor(Math.random() * 50) + 1;
         // } while (random % 2 == 0);
         // console.log("The random number to skip is: " + random);
-        while (true) {
-            random = Math.floor((Math.random() * 50) + 1);
-            if (random % 2 !== 0) {
-                console.log("The random number to skip is: " + random);
-                break;
-            }
+        // while (true) {
+        //     random = Math.floor((Math.random() * 50) + 1);
+        //     if (random % 2 !== 0) {
+        //         console.log("The random number to skip is: " + random);
+        //         break;
+        //     }
 
 
+        // }
+        // for (var i = 1; i < 50; i += 2) {
+
+        //     if (i == random) {
+        //         console.log("Yikes! Skipping number " + random);
+        //         continue;
+        //     }
+        //     console.log('Here is an odd number: ' + i);
+        // }
+        list = "<ul>\n";
+
+        for (i = 0; i < 5; i++) {
+            random = Math.floor((Math.random() * 10) + 10);
+            list += "<li>Random " + random + "</li>\n";
         }
-        for (var i = 1; i <= 50; i += 2) {
-
-            if (i == random) {
-
-                console.log("Yikes! Skipping number " + random);
-                continue;
-            }
-            console.log('Here is an odd number: ' + i);
-        }
+        list += "</ul>";
+        document.quer(list);
     </script>
 </body>
 
