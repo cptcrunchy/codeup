@@ -32,12 +32,12 @@
          * console.log 'helloMessage' to check your work
          */
 
-        function sayHello() {
-            var helloMessage = "Hello, " + myNameIs + "!";
-            // console.log(helloMessage);
-            return helloMessage;
-        }
-        sayHello();
+        // function sayHello(name) {
+        //     var helloMessage = "Hello, " + name + "!";
+        //     // console.log(helloMessage);
+        //     return helloMessage;
+        // }
+        // sayHello(myNameIs);
 
         // Don't modify the following line, it generates a random number between 1 and
         // 100 and stores it in a variable named random
@@ -54,10 +54,10 @@
          *  > isOdd(42) // returns "42 is not odd!"
          */
         function isOdd(random) {
-            (random % 2 == 0) ? random + ' is not odd': random + ' is odd';
+            var message = (random % 2) ? random + ' is odd' : random + ' is not odd';
+            console.log(message);
         }
-        isOdd();
-        console.log(isOdd(random));
+        isOdd(random);
         /**
          * TODO:
          * Call the function 'isOdd' passing the variable 'random' as a parameter.
