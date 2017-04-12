@@ -3,6 +3,7 @@
 
     // TODO: Create an array of 4 people's names using literal array notation, in a variable called 'names'.
     var names = ['John', 'Dusty', 'Ean', 'Jason'];
+
     var meals = ['Lemon Pepper Talapia', 'Mac-n-Cheese', 'Cheeseburger', 'Chicken Soup', 'Fruit Plate',
         'Fries', 'Chicken Wings', 'Hot Dog', 'Chimichanga', 'Burrito', 'Quinoa', 'Lentils-n-Rice'
     ];
@@ -28,7 +29,9 @@
     }
 
     for (i = 0; i < days.length; i++) {
+
         console.log(days[i] + " -" + mealPicker());
     }
+
 
 })();
