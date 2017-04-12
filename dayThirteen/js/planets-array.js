@@ -34,14 +34,14 @@ console.log('Using splice to remove the planet after "Earth".');
 var planetAfterEarth = planets.splice(indexOfEarth + 1, 1);
 logPlanets();
 
-console.log('Using splice to add back the planet after "Earth".');
-planets.splice(indexOfEarth + 1, 0, planetAfterEarth[0]);
-logPlanets();
+// console.log('Using splice to add back the planet after "Earth".');
+// planets.splice(indexOfEarth + 1, 0, planetAfterEarth[0]);
+// logPlanets();
 
-console.log("Reversing the order of the planets array.");
-planets.reverse();
-logPlanets();
+// console.log("Reversing the order of the planets array.");
+// planets.reverse();
+// logPlanets();
 
-console.log("Sorting the planets array.");
-planets.sort();
-logPlanets();
+// console.log("Sorting the planets array.");
+// planets.sort();
+// logPlanets();
