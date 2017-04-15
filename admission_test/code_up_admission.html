@@ -13,18 +13,18 @@
     <div class="row">
         <button onclick="clickCheck()" id="toggle" class='btn btn-default'>Click Me!</button>
     </div>
-    <div class="boxes">
-        <div class="box box-red"></div>
-        <div class="box box-blue"></div>
-        <div class="box box-green"></div>
-        <div class="box box-purple"></div>
-        <div class="box box-gold"></div>
+    <div class="row">
+        <div class="boxes">
+            <div class="box box-red"></div>
+            <div class="box box-blue"></div>
+            <div class="box box-green"></div>
+            <div class="box box-purple"></div>
+            <div class="box box-gold"></div>
+        </div>
     </div>
-
-
     <script>
         function clickCheck(e) {
-            box = document.querySelectorAll('div[class="box]');
+            var box = document.querySelector('.boxes');
             box.classList.add('bigger');
         }
 

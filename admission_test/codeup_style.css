@@ -12,16 +12,27 @@
     width: 100%;
 }
 
+.boxes {
+    display: flex;
+    flex: 1;
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.4s ease;
+}
+
 .box {
-    width: 100px;
-    height: 100px;
-    margin: px;
-    transition: 1.5s ease;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    transition: all 1.5s ease;
     display: inline-block;
 }
 
 .bigger {
     transform: scale(1.3);
+    margin: 10px;
 }
 
 .box:hover {
