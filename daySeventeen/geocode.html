@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google Maps Geocode Exercise</title>
+    <link type="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <h1 class='header'>Google Maps API</h1>
+    <div class="inputs">
+        <label for="Address">Enter Address</label>
+        <input id="address" type="textbox" placeholder="Enter Addresss here">
+        <button id="submit">Submit</button>
+
+        <label for="Zoom Inputs">Zoom:</label>
+        <input type="hidden" id="zoom" value="10">
+        <input type="range" name="Zoom" min="0" max="23">
+    </div>
+    <div class="inputs">
+        <label for="Lat">Latitude: </label>
+        <input type="text" id="lat" placeholder="">
+    </div>
+
+    <div id="map"></div>
+    <!-- Google Map Div -->
+
+    <!--Google Map API Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCopWhl7YCDmXlNeorjhHfLOd1tcLxmBT8"></script>
+
+    <script type="text/javascript" src="js/geocode.js"></script>
+
+
+</body>
+
+</html>
