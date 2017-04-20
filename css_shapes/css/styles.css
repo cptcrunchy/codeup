@@ -1,0 +1,72 @@
+* {
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: #00bcd4;
+}
+
+h1 {
+    background: transparent;
+    color: #e0f7fa;
+    padding: 20px;
+    margin: 30px;
+    border: 3px solid #e0f7fa;
+    border-radius: 6px;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, .3);
+}
+
+.top-triangles {
+    display: flex;
+}
+
+.bottom-triangles {
+    display: flex;
+}
+
+.one {
+    width: 0;
+    height: 0;
+    border-right: 75px solid transparent;
+    border-left: 75px solid transparent;
+    border-bottom: 100px solid #64b5f6;
+}
+
+.two {
+    width: 0;
+    height: 0;
+    margin-left: -75px;
+    border-right: 75px solid transparent;
+    border-left: 75px solid transparent;
+    border-top: 100px solid #2196f3;
+}
+
+.three {
+    width: 0;
+    height: 0;
+    margin-left: -75px;
+    border-right: 75px solid transparent;
+    border-left: 75px solid transparent;
+    border-bottom: 100px solid #1967d2;
+}
+
+.four {
+    width: 0;
+    height: 0;
+    border-top: 150px solid #0d47a1;
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+}
+
+.circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+    background: 80px solid #f00;
+}
