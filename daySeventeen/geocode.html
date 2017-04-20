@@ -19,11 +19,13 @@
 
         <label for="Zoom Inputs">Zoom:</label>
         <input type="hidden" id="zoom" value="10">
-        <input type="range" name="Zoom" min="0" max="23">
+        <input id='zoom-slide' type="range" name="Zoom" min="0" max="23" step='1'>
     </div>
     <div class="inputs">
         <label for="Lat">Latitude: </label>
-        <input type="text" id="lat" placeholder="">
+        <input type="text" id="lat" placeholder="29.798272">
+        <label for="Lng">Longitude: </label>
+        <input type="text" id='lng' placeholder="-98.276292">
     </div>
 
     <div id="map"></div>
