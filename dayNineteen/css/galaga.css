@@ -31,7 +31,7 @@ playerscore {
 galaga {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 62%;
     -webkit-transform: scale(2);
     -webkit-transform-origin: 0 0;
     -moz-transform: scale(2);

@@ -1,18 +1,28 @@
 body {
-	background: black;
-	font-family: Emulogic, "Courier New";
-	margin: 0px;
+    background: black;
+    font-family: Emulogic, "Courier New";
+    margin: 0px;
 }
+
 #title {
-	width: 100%;
-	text-align: center;
-	color: #FFFFFF;
-	font-family: Emulogic, "Courier New";
-	font-size: 18pt;
+    width: 100%;
+    background-image: url(../img/galaga-title.png);
+    background-repeat: no-repeat;
+    background-size: 19em;
+    height: 8.75em;
+    background-position-x: 51%;
+    /*text-align: center;
+    color: #FFFFFF;
+    font-family: Emulogic, "Courier New";
+    font-size: 18pt;*/
+}
+
+
 }
 #title span {
-	color: #FF0000;
+    color: #FF0000;
 }
-#title > #sub, #title > #version {
-	font-size: 8pt;
+#title>#sub,
+#title>#version {
+    font-size: 8pt;
 }
