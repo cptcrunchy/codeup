@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Konami Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Konami Code</h1>
+        <div><img src="https://media.giphy.com/media/13ki5hgynlBaFy/giphy.gif" alt="King Kandy Konami Code"></div>
+        <div class="controller">
+            <div class="column">
+                <div class="dpad">
+                    <button class="btn up"></button>
+                    <button class="btn right"></button>
+                    <button class="btn down"></button>
+                    <button class="btn left"></button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="lines"></div>
+                <div class="lines"></div>
+                <div class="lines"></div>
+                <div class="lines">
+                    <p class="btn-ops">SELECT</p>
+                    <p class="btn-ops">START</p>
+                </div>
+                <div class="lines"></div>
+                <div class="lines"></div>
+            </div>
+            <div class="column">
+                <div class="buttons">
+                    <div class="btn b">
+                        <buttton class="btn btn-b"></buttton>
+                    </div>
+                    <div class="btn a">
+                        <button class="btn btn-a"></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+    <script>
+        var konami = [38, 38, 40, 0, 37, 39, 37, 39, 66, 65, 13];
+        var pressed = [];
+
+        $(document).ready(function() {
+            $(this).keydown(function cheatCode(e) {
+                pressed.push(e.keyCode);
+                if (pressed.toString().indexOf(konami) >= 0) {
+                    $(document).unbind('keydown', cheatCode);
+
+
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

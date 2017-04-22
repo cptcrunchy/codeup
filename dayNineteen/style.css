@@ -1,0 +1,101 @@
+ * {
+     margin: 0 auto;
+ }
+ 
+ .container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ .column {
+     float: left;
+     width: 33%;
+ }
+ 
+ .controller {
+     width: 31.5em;
+     height: 13em;
+     background: #151515;
+     border: 5px solid #b7b7b7;
+     padding: 2px;
+ }
+ 
+ .lines {
+     background: #7c7c7c;
+     height: 24px;
+     width: 10em;
+     border: 1px solid #7c7c7c;
+     margin: 0 auto 10px auto;
+     border-radius: 5px;
+ }
+ 
+ .lines:first-child {
+     border-radius: 0 0 5px 5px;
+ }
+ 
+ .lines:last-child {
+     border-radius: 5px 5px 0 0;
+     margin-top: 12px;
+ }
+ 
+ .lines:nth-child(5) {
+     border: 1px solid #fff;
+ }
+ 
+ .btn-ops {
+     font-family: 'NES';
+     font-size: 16px;
+     color: #f00;
+     width: 70px;
+     margin: 4px 3px 0 5px;
+     text-align: center;
+     display: inline-block;
+ }
+ 
+ .dpad {
+     width: 30px;
+     height: 60px;
+     background: #b7b7b7;
+     margin-top: 90px;
+ }
+ 
+ .btn {
+     height: 35px;
+     width: 35px;
+     background: #000;
+     margin: 0;
+     padding: 0;
+     display: block;
+ }
+ 
+ .up {
+     background: #0EF;
+     border-left: 2px solid #ff00ae;
+     border-top: 2px solid #ff00ae;
+     border-right: 2px solid #ff00ae;
+     border-bottom: solid transparent;
+ }
+ 
+ .right {
+     background: #0f0;
+     margin-left: 32px;
+     border-top: 2px solid #ff00ae;
+     border-right: 2px solid #ff00ae;
+     border-bottom: 2px solid #ff00ae;
+     border-left: solid transparent;
+ }
+ 
+ .down {
+     background: #00f;
+ }
+ 
+ .left {
+     background: #ff0;
+ }
+ /* CUSTOM FONT */
+ 
+ @font-face {
+     font-family: NES;
+     src: url(font/NES2.woff);
+ }
