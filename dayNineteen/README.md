@@ -2,12 +2,9 @@
 
 KONAMI CODE PROJECT
 
-
 ## Usage
 
-This was a project for Codeup using the Konami code key event.
-## Contributing
-
+This was a project for Codeup using the Konami code key event
 
 ## Credits
 
