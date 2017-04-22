@@ -103,6 +103,10 @@
      display: block;
  }
  
+ .dpad-clicked {
+     background: #3f3d3d;
+ }
+ 
  .up {
      background: #000;
      border-left: 5px inset #b7b7b7;
@@ -182,11 +186,11 @@
  /* CUSTOM FONT */
  
  @font-face {
-     font-family: NES;
+     font-family: 'NES';
      src: url(font/NES2.woff);
  }
  
  @font-face {
-     font-family: Nintender;
+     font-family: 'Nintender';
      src: url(font/Nintender.woff);
  }
