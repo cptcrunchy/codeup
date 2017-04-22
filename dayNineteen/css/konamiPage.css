@@ -12,6 +12,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .column {
@@ -33,7 +35,7 @@ body {
     width: 15em;
     height: 2.5em;
     background: #a40e15;
-    margin: 30px;
+    margin: 30px 0 10px 0;
     padding: 1em;
     border-right: 2px solid #a40e15;
     border-bottom-right-radius: 70px;
@@ -44,6 +46,16 @@ body {
     font-family: 'Konsystem';
     text-align: center;
     font-size: 26pt;
+}
+
+.display {
+    width: 400px;
+    height: 270px;
+    margin: 10px 0 30px 0;
+    border-radius: 300px / 154px;
+    text-align: center;
+    text-indent: .1em;
+    background: url(https://media.giphy.com/media/13ki5hgynlBaFy/giphy.gif)center no-repeat;
 }
 
 .controller {
