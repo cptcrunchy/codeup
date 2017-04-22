@@ -1,196 +1,235 @@
- * {
-     margin: 0 auto;
- }
- 
- body {
-     background-image: url(../img/nintendo-background.png);
-     background-size: 100%;
-     background-repeat: no-repeat;
- }
- 
- .container {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
- }
- 
- .column {
-     float: left;
-     width: 33%;
- }
- 
- .logo {
-     color: #f00;
-     font-family: 'Nintender';
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-top: 75px;
-     font-size: 18px;
- }
- 
- .controller {
-     width: 31.5em;
-     height: 13em;
-     background: #151515;
-     border: 15px solid#b7b7b7;
-     padding: 2px;
- }
- 
- .lines {
-     background: #7c7c7c;
-     height: 24px;
-     width: 10em;
-     border: 1px solid #7c7c7c;
-     margin: 0 auto 9px auto;
-     border-radius: 5px;
- }
- 
- .lines:first-child {
-     border-radius: 0 0 5px 5px;
- }
- 
- .lines:last-child {
-     border-radius: 5px 5px 0 0;
-     margin-top: 12px;
- }
- 
- .lines:nth-child(5) {
-     border: 3px inset #fff;
-     background: #dadada;
- }
- 
- .btn-ops {
-     font-family: 'NES';
-     font-size: 16px;
-     color: #f00;
-     width: 70px;
-     margin: 4px 3px 0 5px;
-     text-align: center;
-     display: inline-block;
- }
- 
- .btn-sel {
-     background: #000;
-     width: 35px;
-     height: 15px;
-     float: left;
-     border-radius: 10px;
-     margin: 5px 0 0 20px;
- }
- 
- .btn-str {
-     background: #000;
-     width: 35px;
-     height: 15px;
-     float: right;
-     border-radius: 10px;
-     margin: 5px 20px 0 0;
- }
- 
- .dpad {
-     width: 33px;
-     height: 80px;
-     margin-top: 86px;
-     margin-left: 70px;
- }
- 
- .btn {
-     height: 35px;
-     width: 35px;
-     margin: 0;
-     padding: 0;
-     display: block;
- }
- 
- .dpad-clicked {
-     background: #3f3d3d;
- }
- 
- .up {
-     background: #000;
-     border-left: 5px inset #b7b7b7;
-     border-top: 5px outset #b7b7b7;
-     border-right: 5px solid #b7b7b7;
-     border-bottom: solid transparent;
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
- }
- 
- .right {
-     background: #000;
-     margin-left: 32px;
-     border-top: 5px solid #b7b7b7;
-     border-right: 5px solid #ffffff;
-     border-bottom: 5px solid #b7b7b7;
-     border-left: solid transparent;
-     border-top-right-radius: 5px;
-     border-bottom-right-radius: 5px;
- }
- 
- .center {
-     background: #000;
-     margin-top: -37px;
-     border: solid #212121;
-     width: 35px;
-     height: 35px;
-     border-radius: 40px;
- }
- 
- .down {
-     background: #000;
-     border-top: solid transparent;
-     border-right: 5px inset #b7b7b7;
-     border-bottom: 5px solid #6f6e6e;
-     border-left: 5px inset #b7b7b7;
-     border-bottom-right-radius: 5px;
-     border-bottom-left-radius: 5px;
- }
- 
- .left {
-     background: #000;
-     border-top: 5px solid #b7b7b7;
-     border-right: solid transparent;
-     border-bottom: 5px solid #686161;
-     border-left: 5px solid #4e4d4d;
-     margin: -70px -35px;
-     border-bottom-left-radius: 5px;
-     border-top-left-radius: 5px;
- }
- 
- .btn-frame {
-     background: #fff;
-     width: 45px;
-     height: 45px;
-     display: inline-block;
-     float: left;
-     border-radius: 3px;
- }
- 
- .btn-frame:first-child {
-     margin: 35px 5px 0 30px;
- }
- 
- .btn-frame:last-child {
-     margin: 35px 5px 0 10px;
- }
- 
- .btn-red {
-     width: 35px;
-     height: 35px;
-     border-radius: 20px;
-     border: 4px outset #f00;
-     background: #f00;
-     margin: 5px;
- }
- /* CUSTOM FONT */
- 
- @font-face {
-     font-family: 'NES';
-     src: url(../font/NES2.woff);
- }
- 
- @font-face {
-     font-family: 'Nintender';
-     src: url(../font/Nintender.woff);
- }
+* {
+    margin: 0 auto;
+}
+
+body {
+    background-image: url(../img/nintendo-background.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column {
+    float: left;
+    width: 33%;
+}
+
+.logo {
+    color: #f00;
+    font-family: 'Nintender';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 75px;
+    font-size: 18px;
+}
+
+.konami {
+    width: 15em;
+    height: 2.5em;
+    background: #a40e15;
+    margin: 30px;
+    padding: 1em;
+    border-right: 2px solid #a40e15;
+    border-bottom-right-radius: 70px;
+}
+
+.konami-logo {
+    color: #fff;
+    font-family: 'Konsystem';
+    text-align: center;
+    font-size: 26pt;
+}
+
+.controller {
+    width: 31.5em;
+    height: 13em;
+    background: #151515;
+    border: 15px solid#b7b7b7;
+    padding: 2px;
+}
+
+.lines {
+    background: #7c7c7c;
+    height: 24px;
+    width: 10em;
+    border: 1px solid #7c7c7c;
+    margin: 0 auto 9px auto;
+    border-radius: 5px;
+}
+
+.lines:first-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.lines:last-child {
+    border-radius: 5px 5px 0 0;
+    margin-top: 12px;
+}
+
+.lines:nth-child(5) {
+    border: 3px inset #fff;
+    background: #dadada;
+}
+
+.btn-ops {
+    font-family: 'NES';
+    font-size: 16px;
+    color: #f00;
+    width: 70px;
+    margin: 4px 3px 0 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+.labels>p {
+    font-family: 'NES';
+    font-size: 18px;
+    font-weight: bold;
+    color: #f00;
+    width: 30px;
+    margin: 0 1px 0 4px;
+    text-align: center;
+    display: inline-block;
+}
+
+.labels>p:first-child {
+    margin: 0 0 0 50px;
+}
+
+.labels>p:last-child {
+    margin: 0 0 0 20px;
+}
+
+.btn-sm {
+    background: #000;
+    width: 40px;
+    height: 18px;
+    border-radius: 10px;
+    transition: all 0.1s ease;
+}
+
+.btn {
+    background: #000;
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    transition: all 0.1s ease;
+}
+
+.select {
+    float: left;
+    margin: 3px 0 0 20px;
+}
+
+.start {
+    float: right;
+    margin: 3px 17px 0 0;
+}
+
+.dpad {
+    width: 33px;
+    height: 80px;
+    margin-top: 86px;
+    margin-left: 70px;
+}
+
+.clicked {
+    transform: scale(1.25);
+    background: #b7b7b7;
+}
+
+.up {
+    border-left: 5px inset #b7b7b7;
+    border-top: 5px outset #b7b7b7;
+    border-right: 5px solid #b7b7b7;
+    border-bottom: solid transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.right {
+    margin-left: 32px;
+    border-top: 5px solid #b7b7b7;
+    border-right: 5px solid #ffffff;
+    border-bottom: 5px solid #b7b7b7;
+    border-left: solid transparent;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.center {
+    margin-top: -37px;
+    border: solid #212121;
+    border-radius: 40px;
+}
+
+.down {
+    border-top: solid transparent;
+    border-right: 5px inset #b7b7b7;
+    border-bottom: 5px solid #6f6e6e;
+    border-left: 5px inset #b7b7b7;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.left {
+    border-top: 5px solid #b7b7b7;
+    border-right: solid transparent;
+    border-bottom: 5px solid #686161;
+    border-left: 5px solid #4e4d4d;
+    margin: -70px -35px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn-frame {
+    background: #fff;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.btn-frame:first-child {
+    margin: 35px 5px 0 30px;
+}
+
+.btn-frame:last-child {
+    margin: 35px 5px 0 10px;
+}
+
+.btn-red {
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    border: 4px outset #f00;
+    background: #f00;
+    margin: 5px;
+    transition: all 0.1s ease;
+}
+
+
+/* CUSTOM FONT */
+
+@font-face {
+    font-family: 'NES';
+    src: url(../font/NES2.woff);
+}
+
+@font-face {
+    font-family: 'Nintender';
+    src: url(../font/Nintender.woff);
+}
+
+@font-face {
+    font-family: 'Konsystem';
+    src: url(../font/Konsystem.woff);
+}

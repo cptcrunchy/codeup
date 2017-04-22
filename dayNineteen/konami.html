@@ -13,7 +13,9 @@
 <body>
 
     <div class="container">
-        <h1>Konami Code</h1>
+        <div class="konami">
+            <h1 class="konami-logo">Konami</h1>
+        </div>
         <div><img src="https://media.giphy.com/media/13ki5hgynlBaFy/giphy.gif" alt="King Kandy Konami Code"></div>
         <div class="controller">
             <div class="column">
@@ -34,8 +36,8 @@
                     <p data-key="13" class="btn-ops">START</p>
                 </div>
                 <div class="lines">
-                    <button class="btn-sel"></button>
-                    <button class="btn-str"></button>
+                    <button class="btn-sm select"></button>
+                    <button class="btn-sm start"></button>
                 </div>
                 <div class="lines"></div>
             </div>
@@ -48,6 +50,11 @@
                     <div class="btn-frame">
                         <button data-key="65" class="btn-red"></button>
                     </div>
+                    <div class="labels">
+                        <p>B</p>
+                        <p>A</p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -57,7 +64,8 @@
 
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script type="text/javascript" src="js/jquery.konami.js"></script>
-    <script src="js/codes.js"></script>
+    <script src="js/keys.js"></script>
+    <script src="js/cheat.js"></script>
 </body>
 
 </html>
