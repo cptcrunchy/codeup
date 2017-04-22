@@ -31,7 +31,7 @@ playerscore {
 galaga {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 55%;
     -webkit-transform: scale(2);
     -webkit-transform-origin: 0 0;
     -moz-transform: scale(2);
@@ -126,7 +126,7 @@ galaga>footer .reserve {
 
 @font-face {
     font-family: 'Emulogic';
-    src: url(font/emulogic.woff) format("truetype");
+    src: url(../font/emulogic.woff) format("truetype");
 }
 
 

@@ -3,7 +3,7 @@
  }
  
  body {
-     background-image: url(img/nintendo-background.png);
+     background-image: url(../img/nintendo-background.png);
      background-size: 100%;
      background-repeat: no-repeat;
  }
@@ -187,10 +187,10 @@
  
  @font-face {
      font-family: 'NES';
-     src: url(font/NES2.woff);
+     src: url(../font/NES2.woff);
  }
  
  @font-face {
      font-family: 'Nintender';
-     src: url(font/Nintender.woff);
+     src: url(../font/Nintender.woff);
  }
