@@ -13,6 +13,10 @@
             height: 50%;
             margin: 10px;
         }
+        
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -20,75 +24,56 @@
 
     <div class="container">
         <div class="row">
+
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h1>Would you like to sign up for our newsletter? </h1>
             </div>
-        </div>
-        <div class="row">
-            <button type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Show
-        </button>
-            <ul class="list-group">
-                <dd class="invisible">
-                    <dt>Alcohol</dt>
-                    <dd>Can I drink alcohol in a state park?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Biking</dt>
-                    <dd>Can I ride my bike in a state park?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Birding</dt>
-                    <dd>Where can I go birding? Do you have a bird checklist?</dd>
-                </dd>
 
-                <dd class="invisible">
-                    <dt>Civilian Conservation Corps (CCC)</dt>
-                    <dd>Which state parks were built by the CCC?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Drones</dt>
-                    <dd>Can I fly a drone or other remote control aircraft in a state park?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Fees</dt>
-                    <dd>Where can I find fee information for individual parks?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Geocaching</dt>
-                    <dd>Is geocaching allowed in Texas State Parks?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Golf</dt>
-                    <dd>What state parks have golf courses?</dd>
-                </dd>
-                <dd class="invisible">
-                    <dt>Handguns</dt>
-                    <dd>May I carry my handgun into a state park when I am traveling?</dd>
-                </dd>
-            </ul>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="hidden alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3>Like what you see? Signup for our newsletter! </h3>
+            </div>-->
 
         </div>
         <div class="row">
             <h3>Arches</h3>
-            <ul class="parks">
+            <ul class="parks hidden">
                 <li>On April 12, 1929, Arches became a National Monument.</li>
                 <li>Arches Visitor Center sits at just over 4,000 feet (1,219 m) in elevation.</li>
                 <li>The light opening beneath Delicate Arch is 46 feet (14 m) high.</li>
                 <li>Most of the sandstones in the park contain iron oxide.</li>
             </ul>
             <h3>Badlands</h3>
-            <ul class="parks">
+            <ul class="parks hidden">
                 <li>The name 'badlands' is believed to originate from the Lakota people.</li>
                 <li>President Franklin D. Roosevelt created Badlands National Monument by signing a proclamation.</li>
                 <li>Congress declared the monument Badlands National Park in 1978.</li>
                 <li>Snakes, including the prairie rattlesnake, are common in Badlands National Park.</li>
             </ul>
             <h3>Denali</h3>
-            <ul class="parks">
+            <ul class="parks hidden">
                 <li>Denali's peak is 20,310 feet above sea level, making it the highest mountain in North America.</li>
                 <li>Denali is located in Denali National Park and Preserve, which is more than 6 million acres in size.</li>
                 <li>n 1896 Denali was renamed Mount McKinley.</li>

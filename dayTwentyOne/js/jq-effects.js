@@ -15,11 +15,22 @@ $(document).ready(function() {
         });
     });
 
-
     $('h3').click(function() {
-        $(this).next().css('font-weight', 'bold');
+        $(this).next().slideToggle().toggleClass('hidden');
+
     });
 
+    setTimeout(function() {
+        $('#myModal').modal({
+            show: true
+        });
+    }, 8000);
+
+    // $('h3').click(function() {
+    //     $(this).next().css('font-weight', 'bold');
+    // });
+
+    // $('div.hidden').fadeIn(8000).removeClass('hidden');
 
     $('li').click(function() {
 
