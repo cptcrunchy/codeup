@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>jQuery Attributes Exercise</title>
+    <title>jQuery Effects Exercise</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         .frame {
@@ -19,6 +19,14 @@
 <body>
 
     <div class="container">
+        <div class="row">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h1>Would you like to sign up for our newsletter? </h1>
+            </div>
+        </div>
         <div class="row">
             <button type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Show
@@ -95,44 +103,9 @@
         </div>
 
 
-        <div id="frames" class="row">
-            <div class="col-sm-4 col-md-4 thumbnail">
-                <img class="fr1" src="https://dummyimage.com/300x200/250/090f66&text=Mona+Lisa" alt="">
-            </div>
-
-            <div class="col-sm-4 col-md-4 thumbnail">
-                <img class="fr2" src="https://dummyimage.com/300x200/c4381c/0c1266&text=Monet" alt="">
-            </div>
-
-            <div class="col-sm-4 col-md-4 thumbnail">
-                <img class="fr3" src="https://dummyimage.com/300x200/9e20bd/c9c938&text=Manet" alt="">
-            </div>
-
-        </div>
-
-        <div class="col-sm-12 col-md-12">
-            <div class="col-sm-4 col-md-4">
-                <center>
-                    <button id="tag" class="btn btn-primary">Swap</button>
-                </center>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <center>
-                    <button id="swap2" class="btn btn-warning">Swap</button>
-                </center>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <center>
-                    <button id="swap3" class="btn btn-danger">Swap</button>
-                </center>
-            </div>
-        </div>
-    </div>
-
-    </div>
 
 
-    <!-- Container Div -->
+        <!-- Container Div -->
     </div>
 
 
@@ -141,40 +114,7 @@
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script>
-        $(document).ready(function() {
-
-
-            $('.btn-default').click(function() {
-                $('dd').toggleClass('invisible');
-                ($('dd').hasClass('invisible')) ?
-                $(this).html('<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Show'): $(this).html('<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Hide');
-
-            });
-
-
-            $('.btn-2').click(function() {
-                $('.parks').each(function(index, el) {
-                    $(el).children().last().css('background-color', 'rgb(255,255,0)');
-                });
-            });
-
-
-            $('h3').click(function() {
-                $(this).next().css('font-weight', 'bold');
-            });
-
-
-            $('li').click(function() {
-
-                $(this).parent().children().first().css('color', '#00f');
-
-            });
-
-
-
-        });
-    </script>
+    <script src="js/jq-effects.js"></script>
 
 
 </body>
