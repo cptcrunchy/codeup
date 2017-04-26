@@ -1,25 +1,38 @@
 $(document).ready(function() {
     "use strict";
-    var url = "http://swapi.co/api/people";
+    // var url = "http://swapi.co/api/people";
+    // var options = {
+    //     "data": {
+    //         "name": "Jason",
+    //         "age": 32
+    //     }
+    // }
 
-    function writeNames(names) {
-        data.results.forEach(function(el) {
-            $('.names').append('<li>' + el.name + '</li>');
-        });
-    }
+    // function writeNames(names) {
+    //     names.results.forEach(function(el) {
+    //         $('.names').append('<li>' + el.name + '</li>');
+    //     });
+    // }
 
 
-    $.ajax(url, {
-        'data': {
-            'name': 'Jason',
-            'age': 32,
+    // $.ajax(url, options).done(function(data) {
+    //     writeNames();
+
+    // });
+
+    $.ajax({
+        url: 'http://',
+        data: {
+            format: 'json'
         },
-        'type': 'GET'
-    }).done(function(data) {
-
-
+        error: function() {
+            $('#info').html('<p>An error has occurred</p>');
+        },
+        dataType: 'jsonp',
+        success: function(data) {
+            //variables go here
+        },
+        type: 'GET'
     });
-
-
 
 });
