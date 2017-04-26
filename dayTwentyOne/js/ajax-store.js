@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     "use strict";
 
-    var url = "data/store/";
+    var url = "data/inventory.json";
     var options = {
         "data": {
             title: "title",
@@ -13,8 +13,15 @@ $(document).ready(function() {
     }
 
     function writeNames(data) {
-        data.each(function(el) {
-            console.log(el);
+        data.forEach(function(el) {
+            var html = '<tr><td>' +
+                el.title + '</td><td>' +
+                el.quantity + '</td><td>$' +
+                el.price + '</td><td>' +
+                el.categories[0] + '</td></tr>'
+
+            $('#insertProducts').append(html);
+
         });
     }
 
