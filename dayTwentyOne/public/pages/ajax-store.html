@@ -28,6 +28,7 @@
             "use strict";
             $.getJSON("../inventory", function(data) {
                 data.data.forEach(function(val, key) {
+
                     var html = '<tr><td>' +
                         val.title + '</td><td>' +
                         val.quantity + '</td><td>$' +
@@ -38,6 +39,28 @@
                 });
             });
 
+        });
+    </script>
+
+
+    <script>
+        var url = "data/inventory.json";
+        var tableBody =
+            var str = strin
+
+        function loadTools()
+        $.get(url).done(function(data) {
+            data.forEach(function(el, index) {
+
+                var content = "";
+                content += "<tr>" + "<td>" + val.title + "</td>";
+                content += "<td>" + val.quantity + "</td>";
+                content += "<td>" + val.price + "</td>";
+                content += "<td>" + titleCase(val.categories.join(', '));
+                content += "</td>" + "</tr>";
+
+                tableBody.append(content);
+            });
         });
     </script>
 

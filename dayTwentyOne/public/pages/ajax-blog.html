@@ -89,6 +89,31 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="bootstrap/bootstrap.min.js"></script>
+
+    <script>
+        var blogUrl = 'data/blog.json';
+        var $posts = $('#posts');
+
+        function titleCase(str) {
+            str = str.toLowerCase().split(' ');
+            for (i = 0; i < str.length; i++) {
+                str[i]
+            }
+            return str.join(' ');
+        }
+
+        $.get(url).done(function(data) {
+            data.reverse();
+            var content = "";
+            data.forEach(function(val, index) {
+                content += "<h6 id ='date'>" + val.date + "</h6>";
+                content += "<h3 id ='title'>" + val.quantity + "</td>";
+                content += "<td>" + val.price + "</td>";
+                content += "<td>" + titleCase(val.categories.join(', '));
+                content += "</td>" + "</tr>";
+            });
+        });
+    </script>
 </body>
 
 </html>
