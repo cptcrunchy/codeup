@@ -2,19 +2,137 @@
 
 <head>
     <title>Open Weather API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel='stylesheet' href='css/style.css'>
+
 </head>
 
 <body>
     <main class="container">
-        <h2 class="center-text">A REST and realtime API layer for modern applications.</h2>
+        <div class="well forecast-frame">
+            <h2 class="center-text">Weather Application</h2>
+
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h3 id="station" class="navbar-brand navbar-right"></h3>
+                        <label class="navbar-header h4" for="Latitude">
+                            <input type="text" class="form-control" name="" placeholder="Latitude" readonly>
+                        </label>
+                        <label class="navbar-header h4" for="Longitude"> 
+                            <input type="text" class="form-control" name="" placeholder="Longitude" readonly>
+                        </label>
+
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row">
+                <div class="col-sm-3 wInfo">
+                    <div class="title">High / Low</div>
+                    <div class="cTemp1"></div>
+                    <div class="tempIcon1"></div>
+                    <div class="conditions" id="castId1"></div>
+                    <div class="conditions"><span class="cond">Humidity: </span><span id="dayOneHumid"></span></div>
+                    <div class="conditions"><span class="cond">Wind: </span><span id="dayOneWind"></span></div>
+                    <div class="conditions"><span class="cond">Pressure: </span><span id="dayOneBar"></span></div>
+                </div>
+                <div class="col-sm-3 wInfo">
+                    <div class="title">High / Low</div>
+                    <div class="cTemp2"></div>
+                    <div class="tempIcon2"></div>
+                    <div class="conditions" id="castId2"></div>
+                    <div class="conditions "><span class="cond">Humidity: </span><span id="dayTwoHumid"></span></div>
+                    <div class="conditions "><span class="cond">Wind: </span><span id="dayTwoWind"></span></div>
+                    <div class="conditions "><span class="cond">Pressure: </span><span id="dayTwoBar"></span></div>
+                </div>
+                <div class="col-sm-3 wInfo">
+                    <div class="title">High / Low</div>
+                    <div class="cTemp3"></div>
+                    <div class="tempIcon3"></div>
+                    <div class="conditions" id="castId3"></div>
+                    <div class="conditions"><span class="cond">Humidity: </span><span id="dayThreeHumid"></span></div>
+                    <div class="conditions"><span class="cond">Wind: </span><span id="dayThreeWind"></span></div>
+                    <div class="conditions"><span class="cond">Pressure: </span><span id="dayThreeBar"></span></div>
+                </div>
+            </div>
+        </div>
 
         <footer>
         </footer>
     </main>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
+        $(document).ready(function() {
+            $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id4726206&cnt=3", {
+                APPID: "0e25dfeca63103d3a311c460a9e27548",
+                lat: 29.423017,
+                lon: -98.48527,
+                units: "imperial"
+            }).done(function(data) {
+                var stationId = data.city.name;
+                var current = data.list;
+                var dayOneStat = data.list[0]; //Day One
+                var dayOneIcons = data.list[0].weather[0].icon;
+                var dayTwoStat = data.list[1]; //Day Two
+                var dayTwoIcons = data.list[1].weather[0].icon;
+                var dayThreeStat = data.list[2]; //Day Three
+                var dayThreeIcons = data.list[2].weather[0].icon;
+
+                function getDirection(dir) {
+                    var compass = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+
+                    var result = Math.floor((360 - dir) / 22.5);
+                    return compass[result];
+                }
+
+                console.log(data);
+                console.log(dayOneStat.deg);
+                // Stattion Name
+                $('#station').append(stationId);
+
+                // Day One Variables
+                $('.class or id ').append($());
+
+                $('.tempIcon1').append($('<img src="http://openweathermap.org/img/w/' + dayOneIcons + '.png" alt=" ">'));
+                $('.cTemp1').append(Math.ceil(dayOneStat.temp.max) + '&deg;' + " / " + Math.ceil(dayOneStat.temp.min));
+                $('#castId1').append($('<span class="cond">' + dayOneStat.weather[0].main + "</span>: " + "<span>" + dayOneStat.weather[0].description + '</span>'));
+                $('#dayOneHumid').append(dayOneStat.humidity + " &#37;");
+                $('#dayOneWind').append(Math.floor(dayOneStat.speed) + " mph / " + getDirection(data.list[0].deg));
+                $('#dayOneBar').append(dayOneStat.pressure);
+
+                // Day Two Variables
+                $('.tempIcon2').append($('<img src="http://openweathermap.org/img/w/' + dayTwoIcons + '.png" alt=" ">'));
+                $('.cTemp2').append(Math.ceil(dayTwoStat.temp.max) + '&deg;' + " / " + Math.ceil(dayTwoStat.temp.min));
+                $('#castId2').append($('<span class="cond">' + dayTwoStat.weather[0].main + "</span>: " + "<span>" + dayTwoStat.weather[0].description + '</span>'));
+
+                $('#dayTwoHumid').append(dayTwoStat.humidity + " &#37;");
+                $('#dayTwoWind').append(Math.floor(dayTwoStat.speed) + " mph / " + getDirection(data.list[1].deg));
+                $('#dayTwoBar').append(dayTwoStat.pressure);
+
+
+                // Day Three Varialbes
+                $('.tempIcon3').append($('<img src="http://openweathermap.org/img/w/' + dayThreeIcons + '.png" alt=" ">'));
+                $('.cTemp3').append(Math.ceil(dayThreeStat.temp.max) + '&deg;' + " / " + Math.ceil(dayThreeStat.temp.min));
+                $('#castId3').append($('<span class="cond">' + dayThreeStat.weather[0].main + "</span>: " + "<span>" + dayThreeStat.weather[0].description + '</span>'));
+
+                $('#dayThreeHumid').append(dayThreeStat.humidity + " &#37;");
+                $('#dayThreeWind').append(Math.floor(dayThreeStat.speed) + " mph / " + getDirection(data.list[2].deg));
+                $('#dayThreeBar').append(dayThreeStat.pressure);
+
+
+
+                // $('#cond1').append(tempStat.main + ": ");
+                // $('#status1').append(tempStat.description);
+                // $('#status2').append(current.humidity + " &#37;");
+                // $('#status3').append(Math.floor(wind.speed) + " mph");
+                // $('#status4').append(current.pressure);
+            });
+
+        });
     </script>
+
 </body>
 
 </html>

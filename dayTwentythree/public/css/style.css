@@ -1,15 +1,6 @@
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
- 
  html,
  body {
      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-     font-weight: 400;
-     font-size: 16px;
-     color: #333;
  }
  
  .center-text {
@@ -54,4 +45,35 @@
  a:hover,
  a:focus {
      color: #31D8A0;
+ }
+ 
+ .forecast-frame {
+     background: #31ced8;
+     height: 300px;
+     padding: 10px;
+ }
+ 
+ .col-3 {
+     float: left;
+     height: 75%;
+     width: 33%;
+     background: #d0d0d0;
+     border: 1px solid #9a9999;
+     position: relative;
+ }
+ 
+ .wInfo {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ .cond {
+     font-weight: bold;
+ }
+ 
+ .title {
+     font-size: 1.2em;
+     font-weight: bold;
+     margin-bottom: 3%;
  }
