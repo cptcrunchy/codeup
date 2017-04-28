@@ -8,92 +8,113 @@
 </head>
 
 <body>
-    <main class="container">
-        <div class="well forecast-frame">
-            <h2 class="center-text">Weather Application</h2>
 
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <h3 id="station" class="navbar-brand navbar-right"></h3>
-                        <label class="navbar-header h4" for="Latitude">
-                            <input type="text" class="form-control" name="" placeholder="Latitude" readonly>
-                        </label>
-                        <label class="navbar-header h4" for="Longitude"> 
-                            <input type="text" class="form-control" name="" placeholder="Longitude" readonly>
-                        </label>
-
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="wc-logo.png">
+                    </a>
+                    <li class="active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Weather</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Today's Forecast</a></li>
+                            <li><a href="#">Hourly Forecast</a></li>
+                            <li><a href="#">10 Day Forecast</a></li>
+                            <li><a href="#">National Forecast</a></li>
+                            <li><a href="#">Get Notifications</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maps</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Weather in Motion &reg;</a></li>
+                            <li><a href="#">Radar Maps</a></li>
+                            <li><a href="#">Classic Weather Maps</a></li>
+                            <li><a href="#">Regional Satellite</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search" value="" placeholder="Search city,zip or place">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" id="go" type="button">Go!</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="well frame">
+            <h2 class="text-center">Weather Application</h2>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 id="station" class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row" id="forecast">
+                    </div>
+                    <div class="row">
+                        <div id="map"></div>
                     </div>
                 </div>
-            </nav>
-
-            <div class="row" id="forecast">
-                <!--<div class="col-sm-3 wInfo">
-                    <div class="title">High / Low</div>
-                    <div class="cTemp1"></div>
-                    <div class="tempIcon1"></div>
-                    <div class="conditions" id="castId1"></div>
-                    <div class="conditions"><span class="cond">Humidity: </span><span id="dayOneHumid"></span></div>
-                    <div class="conditions"><span class="cond">Wind: </span><span id="dayOneWind"></span></div>
-                    <div class="conditions"><span class="cond">Pressure: </span><span id="dayOneBar"></span></div>
-                </div>-->
-
             </div>
         </div>
 
-        <footer>
-        </footer>
-    </main>
+    </div>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCopWhl7YCDmXlNeorjhHfLOd1tcLxmBT8">
+    </script>
+    <script src="js/oWeatherAPI.js"></script>
     <script>
         $(document).ready(function() {
-            $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id4726206&cnt=3", {
-                APPID: "0e25dfeca63103d3a311c460a9e27548",
-                lat: 29.423017,
-                lon: -98.48527,
-                units: "imperial"
-            }).done(function(data) {
 
-                var stationId = data.city.name;
+            function initMap() {
+                var latLng = new google.maps.LatLng(29.4261446, -98.4865496);
 
-
-
-                // Stattion Name
-                $('#station').append(stationId);
-
-                console.log(data);
-                var forecast = data.list;
-
-                //Wind Direction in Compass Format
-                function getDirection(dir) {
-                    var compass = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-                    var result = Math.floor((360 - dir) / 22.5);
-                    return compass[result];
+                var mapOptions = {
+                    zoom: 10,
+                    center: latLng,
+                    draggable: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
-                //Forecast Variables
-                function foreCast(data) {
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-                    for (i = 0; i < data.length; i++) {
-                        var html = '';
-                        html += "<div class='col-sm-3 wInfo'>" + "<div class='title'>High / Low</div>";
-                        html += "<div class='cTemp'>" + (Math.ceil(forecast[i].temp.max)) + '&deg;';
-                        html += " / " + (Math.ceil(forecast[i].temp.min)) + '&deg;' + "</div>";
-                        html += "<div class='tempIcon'>" + "<img src='http://openweathermap.org/img/w/" + forecast[i].weather[0].icon;
-                        html += ".png' alt=''></div>" + "<div class='conditions' id='castId'>" + '<span class="cond">' + forecast[i].weather[0].main;
-                        html += "</span>: " + "<span>" + forecast[i].weather[0].description + '</span>' + "</div>";
-                        html += "<div class='conditions'>" + "<span class='cond'>Humidity: </span>" + "<span>" + forecast[i].humidity + "&#37;</span></div>";
-                        html += "<div class='conditions'>" + "<span class='cond'>Wind: </span>" + "<span>" + (Math.floor(forecast[i].speed));
-                        html += " mph / " + getDirection(forecast[i].deg) + "</span></div>" + "<div class='conditions'>";
-                        html += "<span class='cond'>Pressure: </span>" + "<span>" + forecast[i].pressure + "</span></div>";
+                map.addListener('click', function(e) {
+                    placeMarker(e.latLng, map);
+                });
 
-                        return html;
-                    }
+
+                function placeMarker(location) {
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        draggable: true,
+                        map: map
+                    });
+                    map.setCenter(location);
                 }
-                console.log(foreCast(forecast));
-                $()
-            });
+            }
+            initMap();
 
+
+
+            function searchWeather(val) {
+                $('#go').click(function() {
+                    var search = $('#search').val();
+                });
+            }
         });
     </script>
 
