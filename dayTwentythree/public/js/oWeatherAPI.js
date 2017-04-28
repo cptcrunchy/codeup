@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id={4726206}&cnt=3", {
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206&cnt=3", {
         APPID: "0e25dfeca63103d3a311c460a9e27548",
         lat: 29.423017,
         lon: -98.48527,
@@ -11,7 +11,7 @@ $(document).ready(function() {
         $('#station').append(stationId);
 
         var forecast = data.list;
-        // console.log(forecast);
+        console.log(forecast);
         //Wind Direction in Compass Format
         function getDirection(dir) {
             var compass = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
@@ -20,21 +20,56 @@ $(document).ready(function() {
         }
         //Forecast Variables
         var html = [];
-        $.each(forecast, function(i, v) {
-            html.push("<div class='col-xs-4 wInfo'>" + "<div class='title'>High / Low</div>");
-            html.push("<div class='cTemp'>" + (Math.ceil(forecast[i].temp.max)) + '&deg;');
-            html.push(" / " + (Math.ceil(forecast[i].temp.min)) + '&deg;' + "</div>");
-            html.push("<div class='tempIcon'>" + "<img src='http://openweathermap.org/img/w/" + forecast[i].weather[0].icon);
-            html.push(".png' alt=''></div>" + "<div class='conditions' id='castId'>" + '<span class="cond">' + forecast[i].weather[0].main);
-            html.push("</span>: " + "<span>" + forecast[i].weather[0].description + '</span>' + "</div>");
-            html.push("<div class='conditions'>" + "<span class='cond'>Humidity: </span>" + "<span>" + forecast[i].humidity + "&#37;</span></div>");
-            html.push("<div class='conditions'>" + "<span class='cond'>Wind: </span>" + "<span>" + (Math.floor(forecast[i].speed)));
-            html.push(" mph / " + getDirection(forecast[i].deg) + "</span></div>" + "<div class='conditions'>");
-            html.push("<span class='cond'>Pressure: </span>" + "<span>" + forecast[i].pressure + "</span></div>" + "</div>");
-        });
-        $('#forecast').append(html.join(""));
+
+        function getForecast(forecast) {
+            $.each(forecast, function(i, v) {
+                html.push("<div class='col-xs-4 wInfo'>" + "<div class='title'>High / Low</div>");
+                html.push("<div class='cTemp'>" + (Math.ceil(forecast[i].temp.max)) + '&deg;');
+                html.push(" / " + (Math.ceil(forecast[i].temp.min)) + '&deg;' + "</div>");
+                html.push("<div class='tempIcon'>" + "<img src='http://openweathermap.org/img/w/" + forecast[i].weather[0].icon);
+                html.push(".png' alt=''></div>" + "<div class='conditions' id='castId'>" + '<span class="cond">' + forecast[i].weather[0].main);
+                html.push("</span>: " + "<span>" + forecast[i].weather[0].description + '</span>' + "</div>");
+                html.push("<div class='conditions'>" + "<span class='cond'>Humidity: </span>" + "<span>" + forecast[i].humidity + "&#37;</span></div>");
+                html.push("<div class='conditions'>" + "<span class='cond'>Wind: </span>" + "<span>" + (Math.floor(forecast[i].speed)));
+                html.push(" mph / " + getDirection(forecast[i].deg) + "</span></div>" + "<div class='conditions'>");
+                html.push("<span class='cond'>Pressure: </span>" + "<span>" + forecast[i].pressure + "</span></div>" + "</div>");
+            });
+            $('#forecast').append(html.join(""));
+        }
+
     });
 
 
 
 });
+
+function getLocation(lat, lng) {
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206&cnt=3", {
+        APPID: "0e25dfeca63103d3a311c460a9e27548",
+        cnt: "3",
+        lat: lat,
+        lon: lng,
+        units: "imperial"
+    }).done(function(data) {
+        getForecast(data);
+    });
+}
+getLocation(29.423017, -98.48527);
+
+
+function createMarker(lat, lon) {
+    var marker = new google.maps.Marker({
+        position: {
+            lat: lat,
+            lng: lon
+        },
+        map: mapCode,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+    });
+    marker.addListener('dragend', function() {
+        var lat = this.position.lat();
+        var lng = this.position.lng();
+    });
+}
+$('#address-btn').click(codeAddress);
