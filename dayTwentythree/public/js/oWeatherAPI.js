@@ -5,6 +5,18 @@ $(document).ready(function() {
         lon: -98.48527,
         units: "imperial"
     }).done(function(data) {
+        // function getLocation(lat, lng) {
+        //     $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206&cnt=3", {
+        //         APPID: "0e25dfeca63103d3a311c460a9e27548",
+        //         cnt: "3",
+        //         lat: lat,
+        //         lon: lng,
+        //         units: "imperial"
+        //     }).done(function(data) {
+        //         getForecast(data);
+        //     });
+        // }
+        // getLocation(29.423017, -98.48527);
         // Stattion Name
         var stationId = data.city.name;
         $('#station').append(stationId);

@@ -74,7 +74,7 @@
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCopWhl7YCDmXlNeorjhHfLOd1tcLxmBT8"></script>
-
+    <script src="js/oWeatherAPI.js"></script>
     <script>
         $(document).ready(function() {
 
@@ -87,7 +87,7 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                createMarker(latlng.lat(), latlng.lng());
+                // createMarker(latlng.lat(), latlng.lng());
 
                 map.addListener('click', function(e) {
                     placeMarkerAndPanTo(e.latLng, map);
@@ -134,7 +134,7 @@
             });
         });
     </script>
-    <script src="js/oWeatherAPI.js"></script>
+
 </body>
 
 </html>
