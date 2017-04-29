@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id4726206&cnt=3", {
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206&cnt=3", {
         APPID: "0e25dfeca63103d3a311c460a9e27548",
         lat: 29.423017,
         lon: -98.48527,
@@ -11,6 +11,7 @@ $(document).ready(function() {
 
         var forecasts = data.list;
         // console.log(forecasts);
+
         //Wind Direction in Compass Format
         function getDirection(dir) {
             var compass = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
@@ -18,6 +19,7 @@ $(document).ready(function() {
             return compass[result];
         }
         //Forecast Variables
+
         var content = [];
 
         function getForecast(forecast) {
@@ -37,5 +39,36 @@ $(document).ready(function() {
         }
         getForecast(forecasts);
     });
+
+    // function getLocation(lat, lng) {
+    //     $.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=4726206&cnt=3", {
+    //         APPID: "0e25dfeca63103d3a311c460a9e27548",
+    //         cnt: "3",
+    //         lat: lat,
+    //         lon: lng,
+    //         units: "imperial"
+    //     }).done(function(data) {
+    //         getForecast(data);
+    //     });
+    // }
+    // getLocation(29.423017, -98.48527);
+
+
+    // function createMarker(lat, lon) {
+    //     var marker = new google.maps.Marker({
+    //         position: {
+    //             lat: lat,
+    //             lng: lon
+    //         },
+    //         map: mapCode,
+    //         draggable: true,
+    //         animation: google.maps.Animation.DROP
+    //     });
+    //     marker.addListener('dragend', function() {
+    //         var lat = this.position.lat();
+    //         var lng = this.position.lng();
+    //     });
+    // }
+    // $('#address-btn').click(codeAddress);
 
 });

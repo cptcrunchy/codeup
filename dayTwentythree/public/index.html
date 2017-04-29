@@ -4,11 +4,9 @@
     <title>Open Weather API</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel='stylesheet' href='css/style.css'>
-
 </head>
 
 <body>
-
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -75,7 +73,67 @@
     </div>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCopWhl7YCDmXlNeorjhHfLOd1tcLxmBT8"></script>
 
+    <script>
+        $(document).ready(function() {
+
+            function initMap() {
+                var latLng = new google.maps.LatLng(29.4261446, -98.4865496);
+                var mapOptions = {
+                    zoom: 10,
+                    center: latLng,
+                    draggable: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                createMarker(latlng.lat(), latlng.lng());
+
+                map.addListener('click', function(e) {
+                    placeMarkerAndPanTo(e.latLng, map);
+                });
+            }
+
+            function placeMarkerAndPanTo(latLng, map) {
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    draggable: true
+                });
+                map.panTo(latLng);
+            }
+            initMap();
+
+            function codeAddress() {
+                var address = document.getElementById('address').value;
+                geocoder.geocode({
+                    'address': address
+                }, function(results, status) {
+                    if (status == 'OK') {
+                        mapcode.setCenter(results[0].geometry.location); //This line is equal to map:
+                        // Setting markers on map
+                        var lat = result[0].geometry.location.lat();
+                        var marker = new google.maps.Marker({
+                            map: mapcode, //The second element is the var mapcode
+                            position: results[0].geometry.location,
+                            draggable: true
+                        });
+                        marker.setMap(mapcode);
+
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+
+
+            $('#go').click(function() {
+                var search = $('#search').val();
+                console.log(search);
+
+            });
+        });
+    </script>
     <script src="js/oWeatherAPI.js"></script>
 </body>
 
