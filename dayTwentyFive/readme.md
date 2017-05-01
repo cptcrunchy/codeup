@@ -1,17 +1,7 @@
-  var score = 0;
-            var sequence = [];
-            var gameOver = false;
             var strictMode = "off";
-            var onOffStatus = "off";
-            var defaultSpeed = 300; // in MS
-            var speed = 2; // multiplier
-            var guess = [];
-            var doneFlag = false;
-            var winCondition = 20;
-            var sequencePause = 1000;
-            var timeout;
-            var errorSound;
-
+  
+           
+        
      
 
     function greenPush() {
@@ -28,110 +18,14 @@
 
  
 
-    /**
-     * Draw Inner Gray Disc
-     */
-    var innerBlack = canvas.display.arc({
-        x: 260,
-        y: 260,
-        radius: 130,
-        start: 0,
-        end: 360,
-        fill: "linear-gradient(45deg, #303030 23%, #555555 50%);"
-    });
-
-    canvas.addChild(innerBlack);
-
-    /**
-     * Draw Inner Center Disc
-     */
-    var innerDisc = canvas.display.arc({
-        x: 260,
-        y: 260,
-        radius: 100,
-        start: 0,
-        end: 360,
-        fill: "radial-gradient(center, center, #b5bdc8 0%, #d0d8e5 22%, #828c95 47%, #bac0c6 71%, #28343b 100%);"
-    });
-
-    canvas.addChild(innerDisc);
-
-    /**
-     * Bottom panel semicircle
-     */
-    var semiDisc = canvas.display.arc({
-        x: 260,
-        y: 262,
-        radius: 100,
-        start: 25,
-        end: 155,
-        fill: "linear-gradient(45deg, #333333 0%, #000000 100%);"
-    });
-
-    canvas.addChild(semiDisc);
-
-    // Score value text
-    var scoreValueText = canvas.display.text({
-        x: 235,
-        y: 328,
-        origin: {
-            x: "left",
-            y: "middle"
-        },
-        font: "30px Orbitron",
-        text: "00",
-        fill: "#333"
-    });
-
-    canvas.addChild(scoreValueText);
-    
+ 
+  
     //canvas.redraw();
 
     // Write the score value
     updateScore(score);
 
-    /**
-     * On/Off Label
-     */
-    var onOffText = canvas.display.text({
-        x: 188,
-        y: 280,
-        origin: {
-            x: "center",
-            y: "middle"
-        },
-        font: "12px Orbitron",
-        text: "On/Off",
-        fill: "#000"
-    });
-
-    canvas.addChild(onOffText);
-
-    /**
-     * Reset Button
-     */
-    var onOffOuter = canvas.display.arc({
-        x: 190,
-        y: 260,
-        radius: 19,
-        start: 0,
-        end: 360,
-        fill: "#000"
-    });
-
-    canvas.addChild(onOffOuter);
-
-    var onOffButton = canvas.display.arc({
-        x: 190,
-        y: 258,
-        radius: 15,
-        start: 0,
-        end: 360,
-        fill: "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%);"
-    });
-
-    canvas.addChild(onOffButton);
-
+   
     /**
      * Detect On or Off Click
      */
@@ -225,48 +119,7 @@
         }
     });
 
-    /**
-     * Reset Label
-     */
-    var resetText = canvas.display.text({
-        x: 325,
-        y: 280,
-        origin: {
-            x: "center",
-            y: "middle"
-        },
-        font: "12px Orbitron",
-        text: "Reset",
-        fill: "#000"
-    });
-
-    canvas.addChild(resetText);
-
-    /**
-     * Reset Button
-     */
-    var resetButtonOuter = canvas.display.arc({
-        x: 330,
-        y: 260,
-        radius: 19,
-        start: 0,
-        end: 360,
-        fill: "#000"
-    });
-
-    canvas.addChild(resetButtonOuter);
-
-    var resetButton = canvas.display.arc({
-        x: 330,
-        y: 258,
-        radius: 15,
-        start: 0,
-        end: 360,
-        fill: "#radial-gradient(center, center, #f2825b 0%, #e55b2b 50%, #f07146 100%)"
-    });
-
-    canvas.addChild(resetButton);
-
+    
     /**
      * Detect Reset Click
      */
@@ -462,19 +315,6 @@
         //sequence = [3, 4, 2, 1, 4, 2];
     }
 
-    function resetGame() {
-
-        console.clear();
-        sequence = [];
-        guess = [];
-        score = 0;
-        scoreValueText.text = "00";
-        gameOver = false;
-        gameLoop();
-
-    }
+    
 
 });
-
-
-  
