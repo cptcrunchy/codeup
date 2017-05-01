@@ -219,7 +219,7 @@ oCanvas.domReady(function() {
     // ************** GAME FUNCTIONS ****************** //
     // Game reset button function and animation
     resetBtn.bind("click tap", function() {
-        if (pwrStatus == 'On') {
+        if (pwrStatus === 'On') {
             this.radius = 20;
             this.fill = 'radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);';
             canvas.redraw();
