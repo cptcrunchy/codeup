@@ -120,47 +120,13 @@
     });
 
     
-    /**
-     * Detect Reset Click
-     */
 
-    resetButton.bind("click tap", function() {
-
-        if (onOffStatus == "on") {
-            this.radius = 15;
-            this.fill = "#radial-gradient(center, center, #fac695 0%, #f5ab66 47%, #ef8d31 100%)";
-            canvas.redraw();
-
-            setTimeout(function() {
-                resetButton.fill = "#radial-gradient(center, center, #f2825b 0%, #e55b2b 50%, #f07146 100%)";
-                canvas.redraw();
-            }, 300);
-
-            // Do some reset stuff
-            resetGame();
-        }
-
-    });
 
     /*
       =================================================================================
      */
 
-    // Simon Name display
-    var simonText = canvas.display.text({
-        x: 255,
-        y: 190,
-        origin: {
-            x: "center",
-            y: "middle"
-        },
-        font: "46px Orbitron",
-        text: "simon",
-        fill: "#222"
-    });
-
-    canvas.addChild(simonText);
-
+   
     // Score Label
     var scoreText = canvas.display.text({
         x: 255,

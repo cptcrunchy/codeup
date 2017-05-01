@@ -49,7 +49,6 @@ oCanvas.domReady(function() {
         fill: "radial-gradient(center, center, #b5bdc8 0%, #d0d8e5 22%, #828c95 47%, #bac0c6 71%, #28343b 100%);"
     });
     canvas.addChild(innerDisc);
-
     // Draw Button Panel
     var scorePanel = canvas.display.arc({
         x: 260,
@@ -61,14 +60,27 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(scorePanel);
     // Draw Score Box
-    var scoreText = canvas.display.text({
+    var scoreTextValue = canvas.display.text({
         x: 260,
-        y: 330,
+        y: 340,
         origin: { x: 'center', y: 'center' },
         font: "30px Orbitron",
         text: "00",
         fill: "#333"
     })
+    canvas.addChild(scoreTextValue);
+    // Score Label
+    var scoreText = canvas.display.text({
+        x: 255,
+        y: 298,
+        origin: {
+            x: "center",
+            y: "middle"
+        },
+        font: "24px Orbitron",
+        text: "Score",
+        fill: "#333"
+    });
     canvas.addChild(scoreText);
     // Write the score value
 
@@ -81,7 +93,7 @@ oCanvas.domReady(function() {
     var greenBtn = canvas.display.arc({
         x: 255,
         y: 255,
-        radius: 170,
+        radius: 172,
         start: 180,
         end: 270,
         stroke: "140px #0f0",
@@ -114,7 +126,7 @@ oCanvas.domReady(function() {
     var redBtn = canvas.display.arc({
         x: 265,
         y: 255,
-        radius: 170,
+        radius: 172,
         start: 270,
         end: 0,
         stroke: "140px #f00",
@@ -130,13 +142,24 @@ oCanvas.domReady(function() {
             getUserInput();
         }
     });
+    // Red button Push function
+    function redBtnPush() {
+        redBtn.stroke = '137px #aaa';
+        console.log("Red");
+        canvas.redraw();
+        setTimeout(function() {
+            redBtn.stroke = "140px #0f0";
+            canvas.redraw();
+        }, defSpeed * speed);
+        return 2;
+    }
 
     // ************** BLUE BUTTON ****************** //
     // Draw Blue Button
     var blueBtn = canvas.display.arc({
         x: 265,
         y: 265,
-        radius: 170,
+        radius: 172,
         start: 0,
         end: 90,
         stroke: "140px #00f",
@@ -152,13 +175,24 @@ oCanvas.domReady(function() {
             getUserInput();
         }
     });
+    // Blue button Push function
+    function blueBtnPush() {
+        blueBtn.stroke = '137px #aaa';
+        console.log("Blue");
+        canvas.redraw();
+        setTimeout(function() {
+            blueBtn.stroke = "140px #0f0";
+            canvas.redraw();
+        }, defSpeed * speed);
+        return 3;
+    }
 
     // ************** YELLOW BUTTON ****************** //
     // Draw Yellow Button
     var yellowBtn = canvas.display.arc({
         x: 255,
         y: 265,
-        radius: 170,
+        radius: 172,
         start: 90,
         end: 180,
         stroke: "140px #ff0",
@@ -167,28 +201,51 @@ oCanvas.domReady(function() {
     canvas.addChild(yellowBtn);
     // Yellow button click listener
     yellowBtn.bind("click tap", function() {
-        console.log("Yellow");
+        console.log("4");
         if (pwrStatus == "on" && gameOver != true) {
             clearTimeout(timeout);
             userGuess.push('yellowBtnPush()');
             getUserInput();
         }
     });
+    // Yellow button Push function
+    function yellowBtnPush() {
+        yellowBtn.stroke = '137px #aaa';
+        console.log("Yellow");
+        canvas.redraw();
+        setTimeout(function() {
+            yellowBtn.stroke = "140px #0f0";
+            canvas.redraw();
+        }, defSpeed * speed);
+        return 4;
+    }
+
+
     // ************** OPERATION BUTTONS ****************** //
+    // Draw Simon Logo
+    var simonLogo = canvas.display.text({
+        x: 260,
+        y: 180,
+        origin: { x: "center", y: "middle" },
+        font: "32vw Orbitron",
+        text: "Simon",
+        fill: "#222"
+    });
+    canvas.addChild(simonLogo);
     //Power Button Label
     var pwrBtnText = canvas.display.text({
-        x: 215,
-        y: 305,
+        x: 200,
+        y: 288,
         origin: { x: 'center', y: 'center' },
         font: "14px Orbitron",
         text: "On/Off",
-        fill: "#fff"
+        fill: "#000"
     })
     canvas.addChild(pwrBtnText);
     //Draw Power Button 
     var pwrBtn = canvas.display.arc({
-        x: 215,
-        y: 272,
+        x: 200,
+        y: 258,
         radius: 20,
         start: 0,
         end: 360,
@@ -197,26 +254,24 @@ oCanvas.domReady(function() {
     canvas.addChild(pwrBtn);
     //Reset Button Label
     var resetBtnText = canvas.display.text({
-        x: 300,
-        y: 305,
+        x: 320,
+        y: 288,
         origin: { x: 'center', y: 'center' },
         font: "14px Orbitron",
         text: "Reset",
-        fill: "#fff"
+        fill: "#000"
     })
     canvas.addChild(resetBtnText);
     //Draw Reset Button
     var resetBtn = canvas.display.arc({
-        x: 300,
-        y: 272,
+        x: 320,
+        y: 257,
         radius: 20,
         start: 0,
         end: 360,
         fill: "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%);"
     });
     canvas.addChild(resetBtn);
-
-    // ************** GAME FUNCTIONS ****************** //
     // Game reset button function and animation
     resetBtn.bind("click tap", function() {
         if (pwrStatus === 'On') {
@@ -233,11 +288,11 @@ oCanvas.domReady(function() {
     // Game power button function and animation
     pwrBtn.bind("click tap", function() {
         this.radius = 20;
-        this.fill = "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);'";
+        // this.fill = "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);'";
         pwrStatus = (pwrStatus === "On") ? "Off" : "On";
-        this.fill = pwrStatus === "On" ? "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0223 32%, #ffcc55 100%);" : "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%)";
-        scoreText.fill = pwrStatus === "On" ? "#f00" : "linear-gradient(45deg, #333333 0%, #000000 100%);";
-        scorePanel.fill = pwrStatus === "Off" ? "#333" : "linear-gradient(45deg, #333333 0%, #000000 100%);";
+        this.fill = (pwrStatus === "On") ? "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0223 32%, #ffcc55 100%);" : "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%);";
+        scoreTextValue.fill = (pwrStatus === "On") ? "#f00" : "#333";
+        scoreText.fill = (pwrStatus === "Off") ? "#333" : "#f00";
         console.log(score);
 
         canvas.redraw();
@@ -246,13 +301,13 @@ oCanvas.domReady(function() {
 
 
 
-
+    // ************** GAME FUNCTIONS ****************** //
     function resetGame() {
         console.clear();
         sequence = [];
         userGuess = [];
         score = 0;
-        scoreText.text = "00";
+        scoreTextValue.text = "00";
         gameOver = false;
 
     }
