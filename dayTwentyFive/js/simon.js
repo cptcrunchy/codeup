@@ -4,7 +4,7 @@ var userGuess = [];
 var pwrStatus = 'Off';
 var gameOver = false;
 var strictMode = "Off";
-var winCondition = 15;
+var winCondition = 5;
 var simonInterval = 1000;
 var defSpeed = 300; //speed is in ms
 var speed = 2; //speed multiplier
@@ -56,7 +56,7 @@ oCanvas.domReady(function() {
     canvas.addChild(scorePanel);
     // Draw Score Box
     var scoreTextValue = canvas.display.text({
-        x: 251,
+        x: 260,
         y: 340,
         origin: { x: 'center', y: 'center' },
         font: "30px Orbitron",
@@ -66,7 +66,7 @@ oCanvas.domReady(function() {
     canvas.addChild(scoreTextValue);
     // Score Label
     var scoreLabel = canvas.display.text({
-        x: 250,
+        x: 255,
         y: 298,
         origin: {
             x: "center",
@@ -77,9 +77,6 @@ oCanvas.domReady(function() {
         fill: "#333"
     });
     canvas.addChild(scoreLabel);
-
-
-
 
     // ************** GAME BUTTONS ****************** //
 
@@ -97,9 +94,10 @@ oCanvas.domReady(function() {
     canvas.addChild(greenBtn);
 
     // Green button click listener
-    greenBtn.bind("click tap", function(e) {
-        console.log(gameOver);
-        if (pwrStatus == "On" && gameOver != true) {
+    greenBtn.bind("click tap", function handler() {
+        if (pwrStatus == "Off" && gameOver !== true) {
+            this.unbind("click tap", handler);
+        } else {
             clearTimeout(timeout);
             userGuess.push(greenBtnPush());
             getUserInput();
@@ -107,7 +105,7 @@ oCanvas.domReady(function() {
     });
     // Green button Push function
     function greenBtnPush() {
-        greenBtn.stroke = '137px #aaffaa';
+        greenBtn.stroke = '135px #77e377';
         playSound(0);
         console.log("Green");
         canvas.redraw();
@@ -131,21 +129,24 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(redBtn);
     // Red button click listener
-    redBtn.bind("click tap", function() {
-        console.log(gameOver);
-        if (pwrStatus == "On" && gameOver != true) {
+    redBtn.bind("click tap", function handler() {
+        if (pwrStatus == "Off" && gameOver !== true) {
+            this.unbind("click tap", handler);
+        } else {
             clearTimeout(timeout);
             userGuess.push(redBtnPush());
             getUserInput();
         }
+
     });
     // Red button Push function
     function redBtnPush() {
-        redBtn.stroke = '137px #aaa';
+        redBtn.stroke = '135px #f95d5d';
+        playSound(1);
         console.log("Red");
         canvas.redraw();
         setTimeout(function() {
-            redBtn.stroke = "140px #0f0";
+            redBtn.stroke = "140px #f00";
             canvas.redraw();
         }, defSpeed * speed);
         return 2;
@@ -164,9 +165,10 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(blueBtn);
     // Blue button click listener
-    blueBtn.bind("click tap", function() {
-        console.log(gameOver);
-        if (pwrStatus == "On" && gameOver != true) {
+    blueBtn.bind("click tap", function handler() {
+        if (pwrStatus == "Off" && gameOver !== true) {
+            this.unbind("click tap", handler);
+        } else {
             clearTimeout(timeout);
             userGuess.push(blueBtnPush());
             getUserInput();
@@ -174,11 +176,12 @@ oCanvas.domReady(function() {
     });
     // Blue button Push function
     function blueBtnPush() {
-        blueBtn.stroke = '137px #aaa';
+        blueBtn.stroke = '135px #5050e7';
+        playSound(2);
         console.log("Blue");
         canvas.redraw();
         setTimeout(function() {
-            blueBtn.stroke = "140px #0f0";
+            blueBtn.stroke = "140px #00f";
             canvas.redraw();
         }, defSpeed * speed);
         return 3;
@@ -197,9 +200,10 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(yellowBtn);
     // Yellow button click listener
-    yellowBtn.bind("click tap", function() {
-        console.log(gameOver);
-        if (pwrStatus == "On" && gameOver != true) {
+    yellowBtn.bind("click tap", function handler() {
+        if (pwrStatus == "Off" && gameOver !== true) {
+            this.unbind("click tap", handler);
+        } else {
             clearTimeout(timeout);
             userGuess.push(yellowBtnPush());
             getUserInput();
@@ -207,16 +211,16 @@ oCanvas.domReady(function() {
     });
     // Yellow button Push function
     function yellowBtnPush() {
-        yellowBtn.stroke = '137px #aaa';
+        yellowBtn.stroke = '135px #dddd6e';
+        playSound(3);
         console.log("Yellow");
         canvas.redraw();
         setTimeout(function() {
-            yellowBtn.stroke = "140px #0f0";
+            yellowBtn.stroke = "140px #ff0";
             canvas.redraw();
         }, defSpeed * speed);
         return 4;
     }
-
 
     // ************** OPERATION BUTTONS ****************** //
     // Draw Simon Logo
@@ -250,7 +254,7 @@ oCanvas.domReady(function() {
     canvas.addChild(strictLed);
     // Strict Button Label
     var strictBtnText = canvas.display.text({
-        x: 255,
+        x: 260,
         y: 286,
         origin: { x: 'center', y: 'center' },
         font: "14px Orbitron",
@@ -277,7 +281,7 @@ oCanvas.domReady(function() {
     // ************** POWER BUTTON ****************** //
     //Power Button Label
     var pwrBtnText = canvas.display.text({
-        x: 190,
+        x: 200,
         y: 286,
         origin: { x: 'center', y: 'center' },
         font: "14px Orbitron",
@@ -295,14 +299,13 @@ oCanvas.domReady(function() {
     canvas.addChild(pwrBtn);
     // Power Button Function
     pwrBtn.bind("click tap", function() {
+
         this.radius = 20;
         pwrStatus = (pwrStatus === "On") ? "Off" : "On";
+        if (pwrStatus === "On") { playSound(4); }
         this.fill = (pwrStatus === "On") ? "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0223 32%, #ffcc55 100%);" : "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%);";
         scoreTextValue.fill = (pwrStatus === "On") ? "#f00" : "#333";
         scoreLabel.fill = (pwrStatus === "Off") ? "#333" : "#f00";
-        gameLoop();
-
-
         canvas.redraw();
         resetGame();
     });
@@ -310,7 +313,7 @@ oCanvas.domReady(function() {
     // ************** RESET BUTTON ****************** //
     //Reset Button Label
     var resetBtnText = canvas.display.text({
-        x: 315,
+        x: 320,
         y: 286,
         origin: { x: 'center', y: 'center' },
         font: "14px Orbitron",
@@ -329,6 +332,7 @@ oCanvas.domReady(function() {
     // Reset Button Function
     resetBtn.bind("click tap", function() {
         if (pwrStatus === 'On') {
+
             this.radius = 20;
             this.fill = 'radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);';
             canvas.redraw();
@@ -343,8 +347,9 @@ oCanvas.domReady(function() {
 
     // ************** GAME FUNCTIONS ****************** //
 
-    // Write the score value
-    updateScore(score);
+    function gameIntro() {
+
+    }
 
     //Reset the game
     function resetGame() {
@@ -365,13 +370,15 @@ oCanvas.domReady(function() {
         }
         scoreTextValue.text = tempScore;
     }
+    // Write the score value
+    updateScore(score);
 
     // Game Logic
     function gameLoop() {
         if (pwrStatus === "On" && gameOver != true) {
             if (simon.length >= winCondition) {
-                console.log("win");
-                scoreTextValue.text = ""; // Do some celebration!
+                console.log("You win");
+                scoreTextValue.text = "!!"; // Do some celebration!
                 gameOver = true;
             }
             do {
@@ -400,14 +407,14 @@ oCanvas.domReady(function() {
                 x++;
                 if (simon.length === userGuess.length) { doneFlag = true; }
             } while (x < simon.length);
-        } else if (userGuess[x] !== simon[x] && strictMode === "on" && userGuess[x] !== undefined) {
+        } else if (userGuess[x] !== simon[x] && strictMode === "On" && userGuess[x] !== undefined) {
             console.log("Game Over");
             scoreTextValue.text = "XX";
             errorSound = ''; //Play Mp3
             gameOver = true;
         }
         // Mistake non strict mode - replay simon
-        if (userGuess[x] !== simon[x] && strictMode === "off" && userGuess.length != 0) {
+        if (userGuess[x] !== simon[x] && strictMode === "Off" && userGuess.length != 0) {
             var oldTextValue = scoreTextValue.text;
             scoreTextValue.text = "ER";
             errorSound = setTimeout(function() {
@@ -431,17 +438,20 @@ oCanvas.domReady(function() {
 
     // Simon gameplay function
     function playSimon() {
-        console.log("Play Simon");
-        var i = 0;
-        var pulse = setInterval(function() {
-            simonPush(simon[i]);
-            i++;
+        if (pwrStatus === "On" && gameOver != true) {
+            console.log("Play Simon");
+            console.log("----------");
+            var i = 0;
+            var pulse = setInterval(function() {
+                simonPush(simon[i]);
+                i++;
 
-            if (i >= simon.length) {
-                clearInterval(pulse);
-                console.log("Player Guess ");
-            }
-        }, simonInterval);
+                if (i >= simon.length) {
+                    clearInterval(pulse);
+                    // console.log("Player Guess ");
+                }
+            }, simonInterval);
+        }
     }
 
     //Enter Button Input into Array
@@ -457,10 +467,10 @@ oCanvas.domReady(function() {
         }
     }
 
-    // function playSound(note) {
-    //     var audio = document.getElementsByTagName("audio")[note];
-    //     audio.play();
-    // }
+    function playSound(note) {
+        var audio = document.getElementsByTagName("audio")[note];
+        audio.play();
+    }
 
     // End of Canvas
 });
