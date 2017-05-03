@@ -349,7 +349,6 @@ oCanvas.domReady(function() {
 
     // ************** GAME FUNCTIONS ****************** //
 
-
     //Reset the game
     function resetGame() {
         console.clear();
