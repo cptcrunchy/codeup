@@ -5,7 +5,7 @@ var pwrStatus = 'Off';
 var gameOver = false;
 var strictMode = "Off";
 var winCondition = 5;
-var simonInterval = 1000;
+var simonInterval = 1500;
 var defSpeed = 300; //speed is in ms
 var speed = 2; //speed multiplier
 var doneFlag = false;
@@ -241,7 +241,7 @@ oCanvas.domReady(function() {
         x: 260,
         y: 257,
         radius: 15,
-        fill: 'radial-gradient(center, center, #ffffff 0%, #f7ff00 52%, #f7ff00 54%, #f7ff00 100%);'
+        fill: '#radial-gradient(center, center, #ffffff 0%, #f7ff00 52%, #f7ff00 54%, #f7ff00 100%);'
     });
     canvas.addChild(strictBtn);
     // Draw Strict Button LED
@@ -249,7 +249,7 @@ oCanvas.domReady(function() {
         x: 260,
         y: 228,
         radius: 5,
-        fill: "#600505"
+        fill: "#linear-gradient(top, #ffa3a3 0%, #c41919 36%, #e08f8f 100%)"
     });
     canvas.addChild(strictLed);
     // Strict Button Label
@@ -263,21 +263,24 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(strictBtnText);
     // Strict Button Function 
-    strictBtn.bind("click tap", function() {
+    strictBtn.bind("click tap", function handler() {
         // prevent button from working unless turned on.
-        if (gameOver !== true) {
-            // Stop any previous running animation
-            strictLed.stop();
-            console.log("Strict Toggle");
+        if (pwrStatus === "Off" && gameOver !== true) {
+            this.unbind('click tap', handler);
+        } else {
             // Change the button colour on each click
-            strictLed.fill = (strictLed.currentPosition === "On") ? "#linear-gradient(top, #b4e391 0%, #61c419 36%, #b4e391 100%)" : "#linear-gradient(top, #ffa3a3 0%, #c41919 36%, #e08f8f 100%)";
+            strictLed.fill = (strictLed.currentPosition === "On") ? "#linear-gradient(top, #ffa3a3 0%, #c41919 36%, #e08f8f 100%)" : "#linear-gradient(top, #b4e391 0%, #61c419 36%, #b4e391 100%)";
             // Toggle the position for the next click
             strictLed.currentPosition = (strictLed.currentPosition === "On") ? "Off" : "On";
             strictMode = (strictLed.currentPosition === "On") ? "On" : "Off";
+
+            console.log("Strict Toggle");
+            console.log(strictLed.currentPosition);
             console.log("Strict Mode: ", strictMode);
             canvas.redraw();
         }
     });
+
     // ************** POWER BUTTON ****************** //
     //Power Button Label
     var pwrBtnText = canvas.display.text({
@@ -299,7 +302,6 @@ oCanvas.domReady(function() {
     canvas.addChild(pwrBtn);
     // Power Button Function
     pwrBtn.bind("click tap", function() {
-
         this.radius = 20;
         pwrStatus = (pwrStatus === "On") ? "Off" : "On";
         if (pwrStatus === "On") { playSound(4); }
@@ -332,7 +334,7 @@ oCanvas.domReady(function() {
     // Reset Button Function
     resetBtn.bind("click tap", function() {
         if (pwrStatus === 'On') {
-
+            playSound(6);
             this.radius = 20;
             this.fill = 'radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);';
             canvas.redraw();
@@ -347,9 +349,6 @@ oCanvas.domReady(function() {
 
     // ************** GAME FUNCTIONS ****************** //
 
-    function gameIntro() {
-
-    }
 
     //Reset the game
     function resetGame() {
@@ -469,6 +468,7 @@ oCanvas.domReady(function() {
 
     function playSound(note) {
         var audio = document.getElementsByTagName("audio")[note];
+        audio.currentTime = 0;
         audio.play();
     }
 
