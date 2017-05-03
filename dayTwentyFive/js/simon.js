@@ -1,23 +1,8 @@
-var score = 0;
-var simon = [];
-var userGuess = [];
-var pwrStatus = 'Off';
-var gameOver = false;
-var strictMode = "Off";
-var winCondition = 5;
-var simonInterval = 1500;
-var defSpeed = 300; //speed is in ms
-var speed = 2; //speed multiplier
-var doneFlag = false;
-var timeout;
-var errorSound;
-
 oCanvas.domReady(function() {
     var canvas = oCanvas.create({
         canvas: "#canvas",
         background: "transparent"
     });
-
     // Draw Game Case
     var frame = canvas.display.arc({
         x: 260,
@@ -348,8 +333,23 @@ oCanvas.domReady(function() {
     //
 
     // ************** GAME FUNCTIONS ****************** //
+    // GLOBAL VARIABLES //
+    var score = 0;
+    var simon = [];
+    var userGuess = [];
+    var pwrStatus = 'Off';
+    var strictMode = "Off";
+    var doneFlag = false;
+    var gameOver = false;
+    var winCondition = 5;
+    var simonInterval = 1500;
+    var defSpeed = 300; //speed is in ms
+    var speed = 2; //speed multiplier
+    var timeout;
+    var errorSound;
 
-    //Reset the game
+
+    //Resets the game
     function resetGame() {
         console.clear();
         simon = [];
@@ -360,7 +360,7 @@ oCanvas.domReady(function() {
         gameLoop();
     }
 
-    //Keep track of the score count
+    //Keeps track of the score count
     function updateScore(tempScore) {
         // convert to 2 digit string
         if (tempScore < 10) {
@@ -368,44 +368,70 @@ oCanvas.domReady(function() {
         }
         scoreTextValue.text = tempScore;
     }
-    // Write the score value
+    // Writes the score value
     updateScore(score);
 
-    // Game Logic
-    function gameLoop() {
-        if (pwrStatus === "On" && gameOver != true) {
-            if (simon.length >= winCondition) {
-                console.log("You win");
-                scoreTextValue.text = "!!"; // Do some celebration!
-                gameOver = true;
-            }
-            do {
-                if (gameOver != true) {
-                    getNew();
-                    playSimon();
-                }
-            } while (gameOver != true && simon.length <= winCondition && userGuess.length != 0);
-        } else {
-            console.log("Simon is powered off");
-        }
-
-    }
-    // Random # Generator for Simon
+    //Generates Random # for Simon
     function getNew() {
         rand = Math.floor((Math.random() * 4) + 1);
         simon.push(rand);
         //simon = [3, 4, 2, 1, 4, 2];
     }
+    //Game Start and Ready Status function
+    function gameLoop() {
+        if (pwrStatus === "On" && gameOver != true) {
+            if (simon.length >= winCondition) {
+                console.log("You win"); /* */
+                scoreTextValue.text = "!!"; // Do some celebration!
+                gameOver = true;
+            }
+            console.log("Play Simon");
+            console.log("----------");
+            do {
+                getNew();
+                playSimon();
+
+            } while (gameOver != true && simon.length <= winCondition && userGuess.length != 0);
+
+        } else {
+            console.log("Simon is powered off");
+        }
+    }
+    // Simon gameplay function
+    function playSimon() {
+        var i = 0;
+        var pulse = setInterval(function() {
+            simonPush(simon[i]);
+            i++;
+            if (i >= simon.length) {
+                clearInterval(pulse);
+                // console.log("Player Guess ");
+            }
+        }, simonInterval);
+    }
+
+    //Gets Button Input and enters into Array
+    function simonPush(incoming) {
+        if (incoming == 1) {
+            greenBtnPush();
+        } else if (incoming == 2) {
+            redBtnPush();
+        } else if (incoming == 3) {
+            blueBtnPush();
+        } else if (incoming == 4) {
+            yellowBtnPush();
+        }
+    }
 
     // Get Users Input
     function getUserInput() {
         var x = 0;
-        if (userGuess[x] === simon[x] && simon.length >= userGuess.length && userGuess[x] !== undefined) {
+        if (userGuess[x] === simon[x] && simon.length >= userGuess.length) {
             do {
                 x++;
                 if (simon.length === userGuess.length) { doneFlag = true; }
             } while (x < simon.length);
-        } else if (userGuess[x] !== simon[x] && strictMode === "On" && userGuess[x] !== undefined) {
+        } else if (userGuess[x] !== simon[x] && strictMode === "On") {
             console.log("Game Over");
             scoreTextValue.text = "XX";
             errorSound = ''; //Play Mp3
@@ -413,13 +439,18 @@ oCanvas.domReady(function() {
         }
         // Mistake non strict mode - replay simon
         if (userGuess[x] !== simon[x] && strictMode === "Off" && userGuess.length != 0) {
+
             var oldTextValue = scoreTextValue.text;
+
             scoreTextValue.text = "ER";
+
             errorSound = setTimeout(function() {
                 playSound(4);
                 scoreTextValue.text = oldTextValue;
             }, 700);
             userGuess.length = 0;
+            x = 0;
+            console.log(simon[x]);
             playSimon();
         }
 
@@ -430,38 +461,6 @@ oCanvas.domReady(function() {
             score++;
             updateScore(score);
             gameLoop();
-        }
-
-    }
-
-    // Simon gameplay function
-    function playSimon() {
-        if (pwrStatus === "On" && gameOver != true) {
-            console.log("Play Simon");
-            console.log("----------");
-            var i = 0;
-            var pulse = setInterval(function() {
-                simonPush(simon[i]);
-                i++;
-
-                if (i >= simon.length) {
-                    clearInterval(pulse);
-                    // console.log("Player Guess ");
-                }
-            }, simonInterval);
-        }
-    }
-
-    //Enter Button Input into Array
-    function simonPush(incoming) {
-        if (incoming == 1) {
-            greenBtnPush();
-        } else if (incoming == 2) {
-            redBtnPush();
-        } else if (incoming == 3) {
-            blueBtnPush();
-        } else if (incoming == 4) {
-            yellowBtnPush();
         }
     }
 
