@@ -11,8 +11,8 @@ body {
 }
 
 .container {
-    width: 69vw;
-    height: 90vh;
+    width: 35em;
+    height: auto;
     margin: auto;
 }
 

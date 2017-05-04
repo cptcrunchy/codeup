@@ -4,12 +4,10 @@ oCanvas.domReady(function() {
         background: "transparent"
     });
     // Draw Game Case
-    var frame = canvas.display.arc({
+    var frame = canvas.display.ellipse({
         x: 260,
         y: 260,
         radius: 260,
-        start: 0,
-        end: 360,
         fill: "#000"
     });
     canvas.addChild(frame);
@@ -91,8 +89,8 @@ oCanvas.domReady(function() {
     // Green button Push function
     function greenBtnPush() {
         greenBtn.stroke = '135px #77e377';
-        playSound(0);
-        console.log("Green");
+        playSound(1);
+        // console.log("Green");
         canvas.redraw();
         setTimeout(function() {
             greenBtn.stroke = "140px #0f0";
@@ -127,8 +125,8 @@ oCanvas.domReady(function() {
     // Red button Push function
     function redBtnPush() {
         redBtn.stroke = '135px #f95d5d';
-        playSound(1);
-        console.log("Red");
+        playSound(2);
+        //console.log("Red");
         canvas.redraw();
         setTimeout(function() {
             redBtn.stroke = "140px #f00";
@@ -162,8 +160,8 @@ oCanvas.domReady(function() {
     // Blue button Push function
     function blueBtnPush() {
         blueBtn.stroke = '135px #5050e7';
-        playSound(2);
-        console.log("Blue");
+        //console.log("Blue");
+        playSound(3);
         canvas.redraw();
         setTimeout(function() {
             blueBtn.stroke = "140px #00f";
@@ -197,8 +195,8 @@ oCanvas.domReady(function() {
     // Yellow button Push function
     function yellowBtnPush() {
         yellowBtn.stroke = '135px #dddd6e';
-        playSound(3);
-        console.log("Yellow");
+        playSound(4);
+        //console.log("Yellow");
         canvas.redraw();
         setTimeout(function() {
             yellowBtn.stroke = "140px #ff0";
@@ -243,7 +241,7 @@ oCanvas.domReady(function() {
     pwrBtn.bind("click tap", function() {
         this.radius = 20;
         pwrStatus = (pwrStatus === "On") ? "Off" : "On";
-        if (pwrStatus === "On") { playSound(4); }
+        if (pwrStatus === "On") { playSound(7); }
         this.fill = (pwrStatus === "On") ? "radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0223 32%, #ffcc55 100%);" : "radial-gradient(center, center, #a90329 0%, #8f0222 32%, #8f0222 32%, #6d0019 100%);";
         scoreTextValue.fill = (pwrStatus === "On") ? "#f00" : "#333";
         scoreLabel.fill = (pwrStatus === "Off") ? "#333" : "#f00";
@@ -334,13 +332,13 @@ oCanvas.domReady(function() {
     function gameLoop() {
         if (pwrStatus === "On" && gameOver != true) {
             if (simon.length >= winCondition) {
-                console.log("You win"); /* */
-                playSound(5, 6);
+                //console.log("You win"); /* */
+                playSound(6);
                 scoreTextValue.text = "!!"; // Do some celebration!
                 gameOver = true;
             }
-            console.log("Play Simon");
-            console.log("----------");
+            //console.log("Simon's Turn");
+            //console.log("----------");
             do {
                 getNew();
                 playSimon();
@@ -348,7 +346,7 @@ oCanvas.domReady(function() {
             } while (gameOver != true && simon.length <= winCondition && userGuess.length != 0);
 
         } else {
-            console.log("Simon is powered off");
+            //console.log("Simon is powered off");
         }
     }
     // Simon gameplay function
@@ -359,7 +357,7 @@ oCanvas.domReady(function() {
             i++;
             if (i >= simon.length) {
                 clearInterval(pulse);
-                // console.log("Player Guess ");
+                // //console.log("Player Guess ");
             }
         }, simonInterval);
     }
@@ -388,8 +386,7 @@ oCanvas.domReady(function() {
         } else if (userGuess[x] !== simon[x]) {
             console.log("Game Over");
             scoreTextValue.text = "XX";
-
-            playSound([5, 7]);
+            playSound(5);
             gameOver = true;
         }
 
@@ -403,8 +400,10 @@ oCanvas.domReady(function() {
         }
     }
 
-    function playSound(note) {
-        var audio = document.getElementsByTagName("audio")[note];
+    function playSound(e) {
+        var audio = document.querySelector(`audio[data-key="${e}"]`);
+        console.log(e);
+        if (!audio) return;
         audio.currentTime = 0;
         audio.play();
     }
