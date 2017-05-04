@@ -219,52 +219,6 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(simonLogo);
 
-    // ************** STRICT MODE BUTTON ****************** //
-
-    // Draw Strict Button
-    var strictBtn = canvas.display.ellipse({
-        x: 260,
-        y: 257,
-        radius: 15,
-        fill: '#radial-gradient(center, center, #ffffff 0%, #f7ff00 52%, #f7ff00 54%, #f7ff00 100%);'
-    });
-    canvas.addChild(strictBtn);
-    // Draw Strict Button LED
-    var strictLed = canvas.display.ellipse({
-        x: 260,
-        y: 228,
-        radius: 5,
-        fill: "#linear-gradient(top, #ffa3a3 0%, #c41919 36%, #e08f8f 100%)"
-    });
-    canvas.addChild(strictLed);
-    // Strict Button Label
-    var strictBtnText = canvas.display.text({
-        x: 260,
-        y: 286,
-        origin: { x: 'center', y: 'center' },
-        font: "14px Orbitron",
-        text: "Strict",
-        fill: "#000"
-    });
-    canvas.addChild(strictBtnText);
-    // Strict Button Function 
-    strictBtn.bind("click tap", function handler() {
-        // prevent button from working unless turned on.
-        if (pwrStatus === "Off" && gameOver !== true) {
-            this.unbind('click tap', handler);
-        } else {
-            // Change the button colour on each click
-            strictLed.fill = (strictLed.currentPosition === "On") ? "#linear-gradient(top, #ffa3a3 0%, #c41919 36%, #e08f8f 100%)" : "#linear-gradient(top, #b4e391 0%, #61c419 36%, #b4e391 100%)";
-            // Toggle the position for the next click
-            strictLed.currentPosition = (strictLed.currentPosition === "On") ? "Off" : "On";
-            strictMode = (strictLed.currentPosition === "On") ? "On" : "Off";
-
-            console.log("Strict Toggle");
-            console.log(strictLed.currentPosition);
-            console.log("Strict Mode: ", strictMode);
-            canvas.redraw();
-        }
-    });
 
     // ************** POWER BUTTON ****************** //
     //Power Button Label
@@ -319,7 +273,7 @@ oCanvas.domReady(function() {
     // Reset Button Function
     resetBtn.bind("click tap", function() {
         if (pwrStatus === 'On') {
-            playSound(6);
+            playSound(8);
             this.radius = 20;
             this.fill = 'radial-gradient(center, center, #ffcc55 0%, #880022 32%, #8f0222 32%, #ffcc55 100%);';
             canvas.redraw();
@@ -338,7 +292,6 @@ oCanvas.domReady(function() {
     var simon = [];
     var userGuess = [];
     var pwrStatus = 'Off';
-    var strictMode = "Off";
     var doneFlag = false;
     var gameOver = false;
     var winCondition = 5;
@@ -382,6 +335,7 @@ oCanvas.domReady(function() {
         if (pwrStatus === "On" && gameOver != true) {
             if (simon.length >= winCondition) {
                 console.log("You win"); /* */
+                playSound(5, 6);
                 scoreTextValue.text = "!!"; // Do some celebration!
                 gameOver = true;
             }
@@ -431,27 +385,12 @@ oCanvas.domReady(function() {
                 x++;
                 if (simon.length === userGuess.length) { doneFlag = true; }
             } while (x < simon.length);
-        } else if (userGuess[x] !== simon[x] && strictMode === "On") {
+        } else if (userGuess[x] !== simon[x]) {
             console.log("Game Over");
             scoreTextValue.text = "XX";
-            errorSound = ''; //Play Mp3
+
+            playSound([5, 7]);
             gameOver = true;
-        }
-        // Mistake non strict mode - replay simon
-        if (userGuess[x] !== simon[x] && strictMode === "Off" && userGuess.length != 0) {
-
-            var oldTextValue = scoreTextValue.text;
-
-            scoreTextValue.text = "ER";
-
-            errorSound = setTimeout(function() {
-                playSound(4);
-                scoreTextValue.text = oldTextValue;
-            }, 700);
-            userGuess.length = 0;
-            x = 0;
-            console.log(simon[x]);
-            playSimon();
         }
 
         // Successfully completed turn
