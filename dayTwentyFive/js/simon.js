@@ -148,6 +148,7 @@ oCanvas.domReady(function() {
     });
     canvas.addChild(blueBtn);
     // Blue button click listener
+
     blueBtn.bind("click tap", function handler() {
         if (pwrStatus == "Off" && gameOver !== true) {
             this.unbind("click tap", handler);
