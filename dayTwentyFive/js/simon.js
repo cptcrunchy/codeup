@@ -389,6 +389,7 @@ oCanvas.domReady(function() {
             scoreTextValue.text = "XX";
             playSound(5);
             gameOver = true;
+            simon = [];
         }
 
         // Successfully completed turn
